@@ -1,0 +1,43 @@
+server:
+  port: 50001
+
+logging:
+  level:
+    root: info
+
+
+spring:
+  application:
+    name: reksai-dht-node
+  cloud:
+    nacos:
+      config:
+        serverAddr: 'http://nacos.didispace.com'
+        file-extension: yml
+        timeout: 10000
+        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+      discovery:
+        serverAddr: 'http://nacos.didispace.com'
+        timeout: 10000
+#    stream:
+#      kafka:
+
+  profiles:
+    active: dev
+reksai:
+  dht:
+    netty:
+      port: -1
+      rcv-buffer: 268435456
+      send-buffer: 65536
+    bittorrent:
+      nodes:
+        - address: 'router.bittorrent.com'
+          port: 6881
+        - address: 'dht.transmissionbt.com'
+          port: 6881
+        - address: 'router.utorrent.com'
+          port: 6881
+        - address: 'dht.aelitis.com'
+          port: 6881
+      thread-sleep: 50
