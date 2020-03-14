@@ -13,7 +13,7 @@
 > 作为食物链顶端的掠食者，残忍无情的虚空生物，雷克赛能够在地下挖掘隧道，偷袭并吞食毫无防备的猎物。她那永不满足的饥渴让曾经鼎盛一时的恕瑞玛帝国所在的地区满目疮痍。商人、贸易者和武装商队都会绕行百里，来躲开这些广袤的地区。一旦有人在遥远的地平线看到雷克赛，就等于看到自己葬身沙砾之下的命运。
   
   
-[![Watch the video](http://i1.hdslb.com/bfs/archive/4e5b474b0938e138448ae50cf97e2d68fc2e81c3.jpg@320w_200h.webp)](http://player.bilibili.com/player.html?aid=60993476&cid=106125537&page=1)
+[![Watch the video](http://i1.hdslb.com/bfs/archive/4e5b474b0938e138448ae50cf97e2d68fc2e81c3.jpg@1920w_1080h.webp)](http://player.bilibili.com/player.html?aid=60993476&cid=106125537&page=1)
   
   
 ## 致谢
