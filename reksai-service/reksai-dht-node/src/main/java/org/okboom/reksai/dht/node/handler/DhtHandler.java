@@ -200,7 +200,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         DatagramPacket packet = createPacket(t, "r", r, sender);
         sendKRPC(ctx.channel(), packet);
 
-        log.error("announce_peer request, host:{}, port:{} - info_hash:{}", sender.getHostString(), port, HexUtil.encodeHex(infoHash));
+        log.error("announce_peer request, host:{}, port:{} - info_hash:{}", sender.getHostString(), port, HexUtil.encodeHexStr(infoHash));
         // push to kafka
         InfoHash.builder().address(sender.getHostString()).port(port).nid(nodeId).infoHash(infoHash).build();
 
