@@ -1,6 +1,7 @@
 package org.okboom.reksai.dht.node.util;
 
 import cn.hutool.core.net.NetUtil;
+import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.NumberUtil;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -52,16 +53,6 @@ public class NodeIdUtil {
         } catch (NoSuchAlgorithmException e) {
            log.error("{}", e.getMessage());
         }
-    }
-
-    public static String getRandomString(int size) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < size; i++) {
-            int randomNum = random.nextInt(256);
-            sb.append(Character.toChars(randomNum));
-        }
-
-        return sb.toString();
     }
 
     /**
@@ -127,6 +118,20 @@ public class NodeIdUtil {
         return messageDigest.digest();
     }
 
+    /**
+     * 生成随机字符串
+     * @param size 字符串长度
+     * @return
+     */
+    public static String getRandomString(int size) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < size; i++) {
+            int randomNum = random.nextInt(256);
+            sb.append(Character.toChars(randomNum));
+        }
+        return sb.toString();
+    }
+
 
     /**
      * 解析node
@@ -146,6 +151,9 @@ public class NodeIdUtil {
 
                 int port = getPort(currentNodePort);
                 String ip = InetAddress.getByAddress(currentNodeIp).getHostAddress();
+                if(port < 1 || ip.equals(NetUtil.getLocalhostStr()) || HexUtil.encodeHexStr(nodes).length() != 20) {
+                    continue;
+                }
                 InetSocketAddress address = new InetSocketAddress(ip, port);
                 Node node = Node.builder().nid(currentNodeId).address(address).build();
 

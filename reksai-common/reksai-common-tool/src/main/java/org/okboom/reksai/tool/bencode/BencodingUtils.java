@@ -1,4 +1,4 @@
-package org.okboom.reksai.dht.node.util.bencode;
+package org.okboom.reksai.tool.bencode;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

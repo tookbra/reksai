@@ -12,15 +12,24 @@ spring:
   cloud:
     nacos:
       config:
-        serverAddr: 'http://nacos.didispace.com'
+        serverAddr: 'http://console.nacos.io'
         file-extension: yml
         timeout: 10000
-        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
       discovery:
-        serverAddr: 'http://nacos.didispace.com'
+        serverAddr: 'http://console.nacos.io'
         timeout: 10000
 #    stream:
 #      kafka:
+#        binder:
+#          brokers:
+#            - localhost:9092 #kafka服务地址
+#      bindings:
+#        output: #通道名称
+#          binder: kafka
+#          destination: download #topic
+#          group: download-group #group
+#          content-type: application/json
 
   profiles:
     active: dev

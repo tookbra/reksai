@@ -11,7 +11,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.DatagramPacket;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.node.util.NodeIdUtil;
-import org.okboom.reksai.dht.node.util.bencode.BencodingUtils;
+import org.okboom.reksai.tool.bencode.BencodingUtils;
 
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
@@ -64,7 +64,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
     }
 
     /**
-     * 请求
+     * 请求回复解析
      * @param map
      * @param sender
      */
@@ -169,6 +169,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
     /**
      * 回复 announce_peer 请求
+     * 收到这个请求表明发出 announce_peer 请求的节点，正在某个端口下载 torrent 文件
      * request {"t":"aa", "y":"q", "q":"announce_peer", "a": {"id":"abcdefghij0123456789", "implied_port": 1, "info_hash":"mnopqrstuvwxyz123456", "port": 6881, "token": "aoeusnth"}}
      * response {"t":"aa", "y":"r", "r": {"id":"mnopqrstuvwxyz123456"}}
      * @param ctx
@@ -200,7 +201,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         DatagramPacket packet = createPacket(t, "r", r, sender);
         sendKRPC(ctx.channel(), packet);
 
-        log.error("announce_peer request, host:{}, port:{} - info_hash:{}", sender.getHostString(), port, HexUtil.encodeHexStr(infoHash));
+        log.error("announce_peer request, host:{}, port:{} -  nodeId:{}, info_hash:{}", sender.getHostString(), port, HexUtil.encodeHexStr(nodeId), HexUtil.encodeHexStr(infoHash));
         // push to kafka
         InfoHash.builder().address(sender.getHostString()).port(port).nid(nodeId).infoHash(infoHash).build();
 

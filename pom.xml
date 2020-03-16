@@ -151,11 +151,15 @@
     </build>
 
     <repositories>
-        <!--阿里云私服-->
         <repository>
             <id>aliyun</id>
             <name>aliyun</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>nuiton</id>
+            <name>nuiton</name>
+            <url>http://maven.nuiton.org/release/</url>
         </repository>
     </repositories>
 

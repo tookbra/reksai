@@ -1,0 +1,24 @@
+server:
+  port: 50002
+
+logging:
+  level:
+    root: info
+
+
+spring:
+  application:
+    name: reksai-metadata
+  cloud:
+    nacos:
+      config:
+        serverAddr: 'http://nacos.didispace.com'
+        file-extension: yml
+        timeout: 10000
+        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+      discovery:
+        serverAddr: 'http://nacos.didispace.com'
+        timeout: 10000
+
+  profiles:
+    active: dev

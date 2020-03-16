@@ -135,9 +135,9 @@ public class DhtNodeServer {
 
     /**
      * 发送 dht 请求
-     * @param address
-     * @param nid
-     * @param target
+     * @param address 地址
+     * @param nid 本节点nodeId
+     * @param target 目标nodeId
      */
     private void findNode(InetSocketAddress address, byte[] nid, byte[] target) {
         Map<String, Object> map = new HashMap<>(16);

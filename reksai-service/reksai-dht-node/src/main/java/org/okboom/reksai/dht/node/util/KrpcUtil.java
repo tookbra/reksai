@@ -3,7 +3,7 @@ package org.okboom.reksai.dht.node.util;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.socket.DatagramPacket;
-import org.okboom.reksai.dht.node.util.bencode.BencodingUtils;
+import org.okboom.reksai.tool.bencode.BencodingUtils;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;

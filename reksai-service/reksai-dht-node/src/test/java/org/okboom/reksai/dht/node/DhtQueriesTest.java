@@ -2,7 +2,7 @@ package org.okboom.reksai.dht.node;
 
 import org.junit.Test;
 import org.okboom.reksai.dht.node.util.NodeIdUtil;
-import org.okboom.reksai.dht.node.util.bencode.BencodingUtils;
+import org.okboom.reksai.tool.bencode.BencodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
