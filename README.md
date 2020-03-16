@@ -1,5 +1,8 @@
 # 分布式磁力爬虫
       
+## 项目背景
+大约在4年前写了一个[磁力爬虫](https://github.com/tookbra/dht-crawl), 当时只实现了[BEP-0005](http://www.bittorrent.org/beps/bep_0005.html)协议，而对种子文件元信息的解析[BEP-0009](https://www.cnblogs.com/LittleHann/p/6180296.html)实现上出现了问题而后就不了了之。   
+某天在整理自己[Github](https://github.com/tookbra?tab=repositories)仓库的时候看见这个项目(不忍直视)，so~~，曾现在有点时间拿出来再改改（分布式服务 + WebRTC），在线观看[澳门金沙娱乐场](https://en.wikipedia.org/wiki/Sands_Macao)岂不是美滋滋。
      
 ## 名字缘由
   
