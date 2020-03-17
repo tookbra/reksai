@@ -20,6 +20,7 @@ import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.node.util.NodeIdUtil;
+import org.okboom.reksai.tool.ExecutorUtil;
 import org.okboom.reksai.tool.NetUtils;
 
 import java.net.InetSocketAddress;
@@ -57,7 +58,8 @@ public class DhtNodeServer {
                          MessageStreams messageStreams) {
         this.nettyProperties = nettyProperties;
         this.bittorrentProperties = bittorrentProperties;
-        this.taskExecutor = ThreadUtil.newExecutorByBlockingCoefficient(0.7f);
+        BlockingQueue<Runnable> workQueue = new LinkedBlockingDeque<>(bittorrentProperties.getQueueSize());
+        this.taskExecutor = ExecutorUtil.newExecutorByBlockingCoefficient(0.7f, workQueue);
         this.queue = queue;
         this.messageStreams = messageStreams;
     }

@@ -15,7 +15,9 @@ spring:
         serverAddr: 'http://console.nacos.io'
         file-extension: yml
         timeout: 10000
-#        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        sharedConfigs:
+          dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          refresh: true
       discovery:
         serverAddr: 'http://console.nacos.io'
         timeout: 10000
@@ -30,6 +32,8 @@ spring:
           destination: download-metadata #topic
           group: download-metadata-group #group
           content-type: application/json
+          producer:
+            compressionType: lz4
   profiles:
     active: dev
 reksai:
