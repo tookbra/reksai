@@ -151,9 +151,9 @@ public class NodeIdUtil {
 
                 int port = getPort(currentNodePort);
                 String ip = InetAddress.getByAddress(currentNodeIp).getHostAddress();
-                if(port < 1 || ip.equals(NetUtil.getLocalhostStr()) || HexUtil.encodeHexStr(nodes).length() != 20) {
-                    continue;
-                }
+//                if(port < 1 || ip.equals(NetUtil.getLocalhostStr()) || HexUtil.encodeHexStr(nodes).length() != 20) {
+//                    continue;
+//                }
                 InetSocketAddress address = new InetSocketAddress(ip, port);
                 Node node = Node.builder().nid(currentNodeId).address(address).build();
 
