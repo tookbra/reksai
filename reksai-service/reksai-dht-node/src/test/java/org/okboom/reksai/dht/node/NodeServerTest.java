@@ -23,7 +23,7 @@ public class NodeServerTest {
 
         NettyProperties nettyProperties = new NettyProperties();
         Queue<Node> queue = new RamQueue(bittorrentProperties.getQueueSize());
-        DhtNodeServer dhtNodeServer = new DhtNodeServer(bittorrentProperties, nettyProperties, queue);
+        DhtNodeServer dhtNodeServer = new DhtNodeServer(bittorrentProperties, nettyProperties, queue, null);
         dhtNodeServer.run();
     }
 }

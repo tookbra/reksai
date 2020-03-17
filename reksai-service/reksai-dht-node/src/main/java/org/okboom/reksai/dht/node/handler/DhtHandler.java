@@ -4,6 +4,7 @@ import cn.hutool.core.util.HexUtil;
 import org.okboom.reksai.dht.node.api.domain.InfoHash;
 import org.okboom.reksai.dht.node.api.domain.Node;
 import org.okboom.reksai.dht.node.domain.Queue;
+import org.okboom.reksai.dht.node.stream.MessageStreams;
 import org.okboom.reksai.dht.node.util.KrpcUtil;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -12,6 +13,7 @@ import io.netty.channel.socket.DatagramPacket;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.node.util.NodeIdUtil;
 import org.okboom.reksai.tool.bencode.BencodingUtils;
+import org.springframework.messaging.support.MessageBuilder;
 
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
@@ -36,8 +38,10 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
     private Queue<Node> queue;
 
-    public DhtHandler(Executor executor, Queue queue) {
-        this.executor =  executor;
+    private MessageStreams messageStreams;
+
+    public DhtHandler(Executor executor, Queue queue, MessageStreams messageStreams) {
+        this.executor = executor;
         this.queue = queue;
     }
 
@@ -65,13 +69,14 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
     /**
      * 请求回复解析
+     *
      * @param map
      * @param sender
      */
     private void onQuery(ChannelHandlerContext ctx, Map<String, ?> map, InetSocketAddress sender) {
         String queries = new String((byte[]) map.get(KrpcUtil.QUERIES));
         byte[] t = (byte[]) map.get("t");
-        Map<String, ?> a = (Map<String, ?>)map.get("a");
+        Map<String, ?> a = (Map<String, ?>) map.get("a");
         switch (queries) {
             case KrpcUtil.PING:
                 onPing(ctx, t, (byte[]) a.get("id"), sender);
@@ -93,6 +98,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
     /**
      * 回复
+     *
      * @param map
      */
     private void onResponse(Map<String, ?> map) {
@@ -101,7 +107,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         if (KrpcUtil.FIND_NODE.equals(type)) {
             // find_node是我们发出的请求，不需要回复，只要把对方返回的node节点遍历请求加入对方路由表中，这样就可以找到很多朋友
             // {"t":"aa", "y":"r", "r": {"id":"0123456789abcdefghij", "nodes": "def456..."}}
-            Map r = (Map)map.get("r");
+            Map r = (Map) map.get("r");
             byte[] nodes = (byte[]) r.get("nodes");
             if (nodes == null) {
                 return;
@@ -120,9 +126,10 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
      * 回复 ping 请求
      * request {"t":"aa", "y":"q", "q":"ping", "a":{"id":"abcdefghij0123456789"}}
      * response {"t":"aa", "y":"r", "r": {"id":"mnopqrstuvwxyz123456"}}
+     *
      * @param ctx
      * @param t
-     * @param nid 查询者的id
+     * @param nid    查询者的id
      * @param sender 查询者的地址
      */
     private void onPing(ChannelHandlerContext ctx, byte[] t, byte[] nid, InetSocketAddress sender) {
@@ -136,9 +143,10 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
      * 回复 find_node 请求
      * request {"t":"aa", "y":"q", "q":"find_node", "a": {"id":"abcdefghij0123456789", "target":"mnopqrstuvwxyz123456"}}
      * response {"t":"aa", "y":"r", "r": {"id":"0123456789abcdefghij", "nodes": "def456..."}}
+     *
      * @param ctx
      * @param t
-     * @param nid 查询者的id
+     * @param nid    查询者的id
      * @param sender 查询者的地址
      */
     private void onFindNode(ChannelHandlerContext ctx, byte[] t, byte[] nid, InetSocketAddress sender) {
@@ -153,10 +161,11 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
      * 回复 getPeers 请求
      * request  {"t":"aa", "y":"q", "q":"get_peers", "a": {"id":"abcdefghij0123456789", "info_hash":"mnopqrstuvwxyz123456"}}
      * response {"t":"aa", "y":"r", "r": {"id":"abcdefghij0123456789", "token":"aoeusnth", "values": ["axje.u", "idhtnm"]}}
+     *
      * @param ctx
      * @param t
      * @param infoHash 查询者的id
-     * @param sender 查询者的地址
+     * @param sender   查询者的地址
      */
     private void onGetPeers(ChannelHandlerContext ctx, byte[] t, byte[] infoHash, InetSocketAddress sender) {
         Map<String, Object> r = new HashMap<>(10);
@@ -172,6 +181,7 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
      * 收到这个请求表明发出 announce_peer 请求的节点，正在某个端口下载 torrent 文件
      * request {"t":"aa", "y":"q", "q":"announce_peer", "a": {"id":"abcdefghij0123456789", "implied_port": 1, "info_hash":"mnopqrstuvwxyz123456", "port": 6881, "token": "aoeusnth"}}
      * response {"t":"aa", "y":"r", "r": {"id":"mnopqrstuvwxyz123456"}}
+     *
      * @param ctx
      * @param t
      * @param map
@@ -181,15 +191,15 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         byte[] infoHash = (byte[]) map.get("info_hash");
         byte[] token = (byte[]) map.get("token");
         byte[] nid = (byte[]) map.get("id");
-        if(token.length != 2 || infoHash[0] != token[0] || infoHash[1] != token[1]) {
+        if (token.length != 2 || infoHash[0] != token[0] || infoHash[1] != token[1]) {
             return;
         }
 
         int port;
-        if(map.containsKey(KrpcUtil.IMPLIED_PORT) && ((BigInteger) map.get(KrpcUtil.IMPLIED_PORT)).intValue() != 0) {
+        if (map.containsKey(KrpcUtil.IMPLIED_PORT) && ((BigInteger) map.get(KrpcUtil.IMPLIED_PORT)).intValue() != 0) {
             port = sender.getPort();
         } else {
-            if(null == map.get(KrpcUtil.PORT)) {
+            if (null == map.get(KrpcUtil.PORT)) {
                 return;
             }
             port = ((BigInteger) map.get(KrpcUtil.PORT)).intValue();
@@ -205,5 +215,12 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         // push to kafka
         InfoHash.builder().address(sender.getHostString()).port(port).nid(nodeId).infoHash(infoHash).build();
 
+        // 发送消息
+        messageStreams.messageChannel().send(MessageBuilder.withPayload(
+                InfoHash.builder()
+                        .address(sender.getHostString())
+                        .port(sender.getPort())
+                        .nid(nodeId)
+                        .infoHash(infoHash)).build());
     }
 }

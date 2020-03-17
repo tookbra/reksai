@@ -19,18 +19,17 @@ spring:
       discovery:
         serverAddr: 'http://console.nacos.io'
         timeout: 10000
-#    stream:
-#      kafka:
-#        binder:
-#          brokers:
-#            - localhost:9092 #kafka服务地址
-#      bindings:
-#        output: #通道名称
-#          binder: kafka
-#          destination: download #topic
-#          group: download-group #group
-#          content-type: application/json
-
+    stream:
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092 #kafka服务地址
+      bindings:
+        download-metadata-out: #通道名称
+          binder: kafka
+          destination: download-metadata #topic
+          group: download-metadata-group #group
+          content-type: application/json
   profiles:
     active: dev
 reksai:

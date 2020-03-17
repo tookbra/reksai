@@ -9,6 +9,7 @@ import org.okboom.reksai.dht.node.handler.BlackHoleHandler;
 import org.okboom.reksai.dht.node.handler.DhtHandler;
 import org.okboom.reksai.dht.node.props.BittorrentProperties;
 import org.okboom.reksai.dht.node.props.NettyProperties;
+import org.okboom.reksai.dht.node.stream.MessageStreams;
 import org.okboom.reksai.dht.node.util.KrpcUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -45,16 +46,20 @@ public class DhtNodeServer {
 
     private final NettyProperties nettyProperties;
 
+    private final MessageStreams messageStreams;
+
     /**
      * dht节点队列
      */
     private Queue<Node> queue;
 
-    public DhtNodeServer(BittorrentProperties bittorrentProperties, NettyProperties nettyProperties, Queue queue) {
+    public DhtNodeServer(BittorrentProperties bittorrentProperties, NettyProperties nettyProperties, Queue queue,
+                         MessageStreams messageStreams) {
         this.nettyProperties = nettyProperties;
         this.bittorrentProperties = bittorrentProperties;
         this.taskExecutor = ThreadUtil.newExecutorByBlockingCoefficient(0.7f);
         this.queue = queue;
+        this.messageStreams = messageStreams;
     }
 
     /**
@@ -161,7 +166,7 @@ public class DhtNodeServer {
                 if(nettyProperties.isLogEnabled()) {
                     channelPipeline.addLast("logger", new LoggingHandler(LogLevel.INFO));
                 }
-                channelPipeline.addLast("dhtHandler", new DhtHandler(taskExecutor, queue));
+                channelPipeline.addLast("dhtHandler", new DhtHandler(taskExecutor, queue, messageStreams));
                 channelPipeline.addLast("blackHoleHandler",new BlackHoleHandler());
             }
         };

@@ -13,4 +13,11 @@
     <artifactId>reksai-dht-node-api</artifactId>
 
 
+    <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream</artifactId>
+        </dependency>
+    </dependencies>
 </project>

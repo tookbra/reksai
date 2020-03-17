@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.node.api.domain.Node;
 import org.okboom.reksai.dht.node.domain.Queue;
+import org.okboom.reksai.dht.node.stream.MessageStreams;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.scheduling.annotation.Scheduled;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Slf4j
 @AllArgsConstructor
 @EnableDiscoveryClient
+@EnableBinding(MessageStreams.class)
 @SpringBootApplication(scanBasePackages = "org.okboom.reksai")
 public class DhtNodeApplication implements CommandLineRunner {
 
