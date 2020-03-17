@@ -102,7 +102,7 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
         byte[] handshake = new byte[8];
         buffer.readBytes(handshake);
-        if (handshake[5] == 0x10) {
+//        if (handshake[5] == 0x10) {
             byte[] targetInfoHash = new byte[20];
             buffer.readBytes(targetInfoHash);
 
@@ -116,10 +116,10 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
                 nextSize = 4;
                 sendExtHandShake(ctx, Constant.EXT_HANDSHAKE_ID, Constant.EXT_HANDSHAKE_DATA);
             }
-        } else {
-            log.error("remote peer don't support download metadata.");
-            ctx.fireChannelInactive();
-        }
+//        } else {
+//            log.error("remote peer don't support download metadata.");
+//            ctx.fireChannelInactive();
+//        }
     }
 
     private void resolveExtendMessage(ChannelHandlerContext ctx, ByteBuf buffer) {
@@ -273,6 +273,6 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         super.channelInactive(ctx);
-        ctx.channel().close();
+        ctx.channel().close().sync();
     }
 }
