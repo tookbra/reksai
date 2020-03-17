@@ -23,6 +23,7 @@
         <module>reksai-common</module>
         <module>reksai-service</module>
         <module>reksai-supports</module>
+        <module>reksai-portal</module>
     </modules>
 
     <properties>
