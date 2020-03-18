@@ -26,6 +26,14 @@
 ## 预览
 
 ### announce_peer
+运行环境([vultr](https://www.vultr.com/?ref=6986789) vps):
+* CPU:	Intel Xeon E3-1230 v3 - 3.3 GHz - 1 core(s)
+* RAM:	2GB - RAM
+* Hard Drive(s):	55GB
+* Bandwidth:	2000GB   
+   
+平均每秒记录infoHash900条(未去重)    
+   
 ![image](https://github.com/tookbra/reksai/blob/master/doc/images/announce_peer.gif)
 
 ## 致谢
@@ -36,3 +44,4 @@
 [使用WireShark进行磁力链接协议分析](https://www.aneasystone.com/archives/2015/05/analyze-magnet-protocol-using-wireshark.html)
 
 [Kademlia、DHT、KRPC、BitTorrent 协议、DHT Sniffer](https://www.cnblogs.com/LittleHann/p/6180296.html)
+90647664 90646838 826
