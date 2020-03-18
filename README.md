@@ -27,7 +27,7 @@
 
 ### announce_peer
 运行环境([vultr](https://www.vultr.com/?ref=6986789) vps):
-* CPU:	Intel Xeon E3-1230 v3 - 3.3 GHz - 1 core(s)
+* CPU:	2.5 GHz - 1 core(s)
 * RAM:	2GB - RAM
 * Hard Drive(s):	55GB
 * Bandwidth:	2000GB   
