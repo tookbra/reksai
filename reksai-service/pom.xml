@@ -25,6 +25,11 @@
                 <artifactId>reksai-dht-node-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.okboom</groupId>
+                <artifactId>reksai-dht-metadata-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

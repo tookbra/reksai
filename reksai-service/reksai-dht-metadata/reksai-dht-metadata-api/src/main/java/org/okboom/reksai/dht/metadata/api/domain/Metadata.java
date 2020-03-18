@@ -1,4 +1,4 @@
-package org.okboom.reksai.dht.metadata.domain;
+package org.okboom.reksai.dht.metadata.api.domain;
 
 import lombok.Data;
 import lombok.ToString;
@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-public class Torrent implements Serializable {
+public class Metadata implements Serializable {
 
     /**
      * infoHash

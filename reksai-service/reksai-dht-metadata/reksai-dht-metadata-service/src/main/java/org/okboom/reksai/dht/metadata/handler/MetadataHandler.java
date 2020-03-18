@@ -7,8 +7,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.okboom.reksai.dht.metadata.api.domain.Metadata;
 import org.okboom.reksai.dht.metadata.common.Constant;
-import org.okboom.reksai.dht.metadata.domain.Torrent;
 import org.okboom.reksai.dht.metadata.util.TorrentUtil;
 import org.okboom.reksai.tool.bencode.BencodingUtils;
 
@@ -156,8 +156,8 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
                 log.info("metadata:{}", HexUtil.encodeHexStr(metadata));
                 Map map = BencodingUtils.decode(metadata);
                 if (map != null) {
-                    Torrent torrent = TorrentUtil.parseTorrent(infoHash, map);
-                    log.info("torrent:{}", torrent.toString());
+                    Metadata Metadata = TorrentUtil.parseTorrent(infoHash, map);
+                    log.info("Metadata:{}", Metadata.toString());
                     ctx.fireChannelInactive();
                 }
             }

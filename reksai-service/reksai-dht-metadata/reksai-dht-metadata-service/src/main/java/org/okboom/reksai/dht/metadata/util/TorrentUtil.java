@@ -3,8 +3,8 @@ package org.okboom.reksai.dht.metadata.util;
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
+import org.okboom.reksai.dht.metadata.api.domain.Metadata;
 import org.okboom.reksai.dht.metadata.domain.Node;
-import org.okboom.reksai.dht.metadata.domain.Torrent;
 import org.okboom.reksai.tool.StringUtil;
 
 import java.math.BigInteger;
@@ -28,11 +28,11 @@ public final class TorrentUtil {
     public static final String FILES = "files";
 
     /**
-     * 解析 Torrent 文件信息，封装成对象
+     * 解析 Metadata 文件信息，封装成对象
      *
      * 多文件Torrent的结构的树形图为：
      *
-     * Multi-file Torrent
+     * Multi-file Metadata
      * ├─announce
      * ├─announce-list
      * ├─comment
@@ -56,7 +56,7 @@ public final class TorrentUtil {
      *
      * 单文件Torrent的结构的树形图为：
      *
-     * Single-File Torrent
+     * Single-File Metadata
      * ├─announce
      * ├─announce-list
      * ├─comment
@@ -77,9 +77,9 @@ public final class TorrentUtil {
      *
      * @param infoHash
      * @param map
-     * @return java.util.Optional<cc.dodder.common.entity.Torrent>
+     * @return java.util.Optional<cc.dodder.common.entity.Metadata>
      */
-    public static final Torrent parseTorrent(byte[] infoHash, Map map) {
+    public static final Metadata parseTorrent(byte[] infoHash, Map map) {
         String encoding = null;
         Map<String, Object> info;
         if (map.containsKey(INFO)) {
@@ -95,12 +95,12 @@ public final class TorrentUtil {
             encoding = (String) map.get(ENCODING);
         }
 
-        Torrent torrent = new Torrent();
+        Metadata Metadata = new Metadata();
 
         if (map.containsKey(CREATION_DATE)) {
-            torrent.setCreateDate(((BigInteger) map.get(CREATION_DATE)).longValue());
+            Metadata.setCreateDate(((BigInteger) map.get(CREATION_DATE)).longValue());
         } else {
-            torrent.setCreateDate(System.currentTimeMillis());
+            Metadata.setCreateDate(System.currentTimeMillis());
         }
 
         byte[] temp;
@@ -115,28 +115,28 @@ public final class TorrentUtil {
             }
         }
 
-        torrent.setFileName(StrUtil.str(temp, encoding));
+        Metadata.setFileName(StrUtil.str(temp, encoding));
 
         // 多文件
         if (info.containsKey(FILES)) {
-            parseMultiFile(torrent, info);
+            parseMultiFile(Metadata, info);
         } else {
-            torrent.setFileSize(((BigInteger) info.get("length")).longValue());
+            Metadata.setFileSize(((BigInteger) info.get("length")).longValue());
 
-            String type = ExtensionUtil.getExtensionType(torrent.getFileName());
+            String type = ExtensionUtil.getExtensionType(Metadata.getFileName());
             if (type != null) {
-                torrent.setFileType(type);
+                Metadata.setFileType(type);
             }
         }
-        torrent.setInfoHash(HexUtil.encodeHexStr(infoHash));
-        return torrent;
+        Metadata.setInfoHash(HexUtil.encodeHexStr(infoHash));
+        return Metadata;
     }
 
     /**
      * 解析多文件
-     * @param torrent
+     * @param Metadata
      */
-    private static void parseMultiFile(Torrent torrent, Map<String, Object> info) {
+    private static void parseMultiFile(Metadata Metadata, Map<String, Object> info) {
         Set<String> types = new HashSet<>();
 
         List<Map<String, Object>> list = (List<Map<String, Object>>) info.get("files");
@@ -179,14 +179,14 @@ public final class TorrentUtil {
             i++;
         }
         Node node = TreeUtil.createTree(nodes);
-        torrent.setFileSize(total);
-        torrent.setFiles(JSONUtil.toJsonStr(node));
+        Metadata.setFileSize(total);
+        Metadata.setFiles(JSONUtil.toJsonStr(node));
         if (types.size() <= 0) {
             types.add("其他");
         }
         String sType = String.join(",", types);
         if (sType != null && !"".equals(sType)) {
-            torrent.setFileType(sType);
+            Metadata.setFileType(sType);
         }
     }
 }
