@@ -23,6 +23,11 @@
   
     
     
+## 预览
+
+### announce_peer
+![image](https://github.com/tookbra/reksai/blob/master/doc/images/announce_peer.gif)
+
 ## 致谢
 [bittorrent](http://www.bittorrent.org/index.html "标题")
 
