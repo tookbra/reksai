@@ -1,0 +1,6 @@
+${AnsiColor.YELLOW}                   __                   .__
+${AnsiColor.YELLOW}   _______   ____ |  | __  ___________  |__|
+${AnsiColor.YELLOW}   \_  __ \_/ __ \|  |/ / /  ___/\__  \ |  |
+${AnsiColor.YELLOW}    |  | \/\  ___/|    <  \___ \  / __ \|  |
+${AnsiColor.YELLOW}    |__|    \___  >__|_ \/____  >(____  /__|
+${AnsiColor.YELLOW}                \/     \/     \/      \/
