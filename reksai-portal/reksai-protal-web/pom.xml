@@ -11,5 +11,16 @@
 
     <artifactId>reksai-protal-web</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.okboom</groupId>
+            <artifactId>reksai-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>velocity-spring-boot-starter</artifactId>
+            <version>1.0.4.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 </project>

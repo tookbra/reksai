@@ -10,40 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>reksai-dht-node</artifactId>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <!-- netty -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
 
-        <!-- common -->
-        <dependency>
-            <groupId>org.okboom</groupId>
-            <artifactId>reksai-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.okboom</groupId>
-            <artifactId>reksai-dht-node-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-kafka-streams</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-kafka</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>reksai-dht-node-api</module>
+        <module>reksai-dht-node-service</module>
+    </modules>
 </project>

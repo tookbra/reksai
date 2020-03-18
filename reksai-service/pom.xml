@@ -14,7 +14,6 @@
 
     <modules>
         <module>reksai-dht-node</module>
-        <module>reksai-dht-node-api</module>
         <module>reksai-dht-metadata</module>
         <module>reksai-dht-search</module>
     </modules>

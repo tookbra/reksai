@@ -3,15 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>reksai-service</artifactId>
+        <artifactId>reksai-dht-node</artifactId>
         <groupId>org.okboom</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
 
     <artifactId>reksai-dht-node-api</artifactId>
-
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- Spring -->

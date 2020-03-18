@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: reksai-protal-web
+  velocity:
+    suffix: .vm
+  cloud:
+    nacos:
+      config:
+        serverAddr: 'http://console.nacos.io'
+        file-extension: yml
+        timeout: 10000
+        sharedConfigs:
+          dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          refresh: true
+      discovery:
+        serverAddr: 'http://console.nacos.io'
+        timeout: 10000
+  profiles:
+    active: dev
