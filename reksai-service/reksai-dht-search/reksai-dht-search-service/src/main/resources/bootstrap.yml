@@ -1,0 +1,30 @@
+server:
+  port: 50003
+
+logging:
+  level:
+    root: info
+
+spring:
+  application:
+    name: reksai-dht-search-service
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        serverAddr: 'http://console.nacos.io'
+        file-extension: yml
+        timeout: 10000
+        sharedConfigs:
+          dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          refresh: true
+      discovery:
+        serverAddr: 'http://console.nacos.io'
+        timeout: 10000
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017
+      username: reksai
+      password: reksai
+      database: reksai
