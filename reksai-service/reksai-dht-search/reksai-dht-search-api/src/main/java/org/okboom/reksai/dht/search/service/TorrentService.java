@@ -1,6 +1,5 @@
 package org.okboom.reksai.dht.search.service;
 
-import org.okboom.reksai.data.result.ResultInner;
 import org.okboom.reksai.dht.search.dto.TorrentDTO;
 
 /**
@@ -13,5 +12,5 @@ public interface TorrentService {
      * @param infoHash
      * @return
      */
-    ResultInner<TorrentDTO> findById(String infoHash);
+    TorrentDTO findByInfoHash(String infoHash);
 }
