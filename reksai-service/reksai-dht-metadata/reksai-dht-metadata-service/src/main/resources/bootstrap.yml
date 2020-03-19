@@ -34,6 +34,13 @@ spring:
           content-type: application/json
           consumer:
             compressionType: lz4
+        store-metadata-out: #通道名称
+          binder: kafka
+          destination: store-metadata #topic
+          group: store-metadata-group #group
+          content-type: application/json
+          producer:
+            compressionType: lz4
 
   profiles:
     active: dev

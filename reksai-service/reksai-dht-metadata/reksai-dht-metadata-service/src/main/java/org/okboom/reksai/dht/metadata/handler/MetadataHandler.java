@@ -9,8 +9,14 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.metadata.api.domain.Metadata;
 import org.okboom.reksai.dht.metadata.common.Constant;
+import org.okboom.reksai.dht.metadata.stream.MetadataStreams;
 import org.okboom.reksai.dht.metadata.util.TorrentUtil;
+import org.okboom.reksai.dht.node.api.domain.InfoHash;
+import org.okboom.reksai.dht.node.stream.InfoHashStreams;
 import org.okboom.reksai.tool.bencode.BencodingUtils;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.util.MimeTypeUtils;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -40,9 +46,12 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private byte[] metadata;
     private int nextSize;
 
-    public MetadataHandler(byte[] peerId, byte[] infoHash) {
+    private MetadataStreams metadataStreams;
+
+    public MetadataHandler(byte[] peerId, byte[] infoHash, MetadataStreams metadataStreams) {
         this.peerId = peerId;
         this.infoHash = infoHash;
+        this.metadataStreams = metadataStreams;
     }
 
     @Override
@@ -158,7 +167,13 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
                 if (map != null) {
                     Metadata Metadata = TorrentUtil.parseTorrent(infoHash, map);
                     log.info("Metadata:{}", Metadata.toString());
-                    ctx.fireChannelInactive();
+                    // 发送消息
+                    if(null != metadataStreams) {
+                        metadataStreams.messageChannel().send(MessageBuilder.withPayload(metadata)
+                                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+                                .build());
+                    }
+                    ctx.close();
                 }
             }
         }
@@ -263,16 +278,5 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
         buffer.writeBytes(infoHash);
         buffer.writeBytes(peerId);
         ctx.channel().writeAndFlush(buffer);
-    }
-
-    /**
-     * 断开连接
-     * @param ctx
-     * @throws Exception
-     */
-    @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        super.channelInactive(ctx);
-        ctx.channel().close().sync();
     }
 }

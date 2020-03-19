@@ -1,4 +1,4 @@
-package org.okboom.reksai.dht.node.stream;
+package org.okboom.reksai.dht.metadata.stream;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
@@ -9,10 +9,10 @@ import org.springframework.messaging.SubscribableChannel;
  * 种子信息 stream
  * @author tookbra
  */
-public interface MessageStreams {
+public interface MetadataStreams {
 
-    String INPUT = "download-metadata-in";
-    String OUTPUT = "download-metadata-out";
+    String INPUT = "store-metadata-in";
+    String OUTPUT = "store-metadata-out";
 
     /**
      * input

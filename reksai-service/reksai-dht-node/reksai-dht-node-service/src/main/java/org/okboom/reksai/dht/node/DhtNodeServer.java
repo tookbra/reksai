@@ -9,7 +9,7 @@ import org.okboom.reksai.dht.node.handler.BlackHoleHandler;
 import org.okboom.reksai.dht.node.handler.DhtHandler;
 import org.okboom.reksai.dht.node.props.BittorrentProperties;
 import org.okboom.reksai.dht.node.props.NettyProperties;
-import org.okboom.reksai.dht.node.stream.MessageStreams;
+import org.okboom.reksai.dht.node.stream.InfoHashStreams;
 import org.okboom.reksai.dht.node.util.KrpcUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -47,7 +47,7 @@ public class DhtNodeServer {
 
     private final NettyProperties nettyProperties;
 
-    private final MessageStreams messageStreams;
+    private final InfoHashStreams messageStreams;
 
     /**
      * dht节点队列
@@ -55,7 +55,7 @@ public class DhtNodeServer {
     private Queue<Node> queue;
 
     public DhtNodeServer(BittorrentProperties bittorrentProperties, NettyProperties nettyProperties, Queue queue,
-                         MessageStreams messageStreams) {
+                         InfoHashStreams messageStreams) {
         this.nettyProperties = nettyProperties;
         this.bittorrentProperties = bittorrentProperties;
         BlockingQueue<Runnable> workQueue = new LinkedBlockingDeque<>(bittorrentProperties.getQueueSize());

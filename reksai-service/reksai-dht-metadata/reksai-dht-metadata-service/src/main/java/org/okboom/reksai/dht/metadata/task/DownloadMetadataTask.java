@@ -10,6 +10,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.metadata.builder.BootstrapBuilder;
 import org.okboom.reksai.dht.metadata.handler.MetadataHandler;
+import org.okboom.reksai.dht.metadata.stream.MetadataStreams;
 import org.okboom.reksai.dht.node.api.domain.InfoHash;
 
 import java.net.InetSocketAddress;
@@ -22,7 +23,9 @@ public class DownloadMetadataTask implements Runnable {
 
     private InfoHash infoHash;
 
-    public DownloadMetadataTask(InfoHash infoHash) {
+    private MetadataStreams metadataStreams;
+
+    public DownloadMetadataTask(InfoHash infoHash, MetadataStreams metadataStreams) {
         this.infoHash = infoHash;
     }
 
@@ -36,7 +39,7 @@ public class DownloadMetadataTask implements Runnable {
             @Override
             protected void initChannel(SocketChannel ch) throws Exception {
                 ChannelPipeline pipeline = ch.pipeline();
-                pipeline.addLast("handler", new MetadataHandler(infoHash.getNid(), infoHash.getInfoHash()));
+                pipeline.addLast("handler", new MetadataHandler(infoHash.getNid(), infoHash.getInfoHash(), metadataStreams));
             }
         });
         ChannelFuture f = bootstrap.connect(inetSocketAddress);

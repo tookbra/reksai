@@ -4,7 +4,7 @@ import cn.hutool.core.util.HexUtil;
 import org.okboom.reksai.dht.node.api.domain.InfoHash;
 import org.okboom.reksai.dht.node.api.domain.Node;
 import org.okboom.reksai.dht.node.domain.Queue;
-import org.okboom.reksai.dht.node.stream.MessageStreams;
+import org.okboom.reksai.dht.node.stream.InfoHashStreams;
 import org.okboom.reksai.dht.node.util.KrpcUtil;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -38,9 +38,9 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
     private Queue<Node> queue;
 
-    private MessageStreams messageStreams;
+    private InfoHashStreams infoHashStreams;
 
-    public DhtHandler(Executor executor, Queue queue, MessageStreams messageStreams) {
+    public DhtHandler(Executor executor, Queue queue, InfoHashStreams infoHashStreams) {
         this.executor = executor;
         this.queue = queue;
     }
@@ -216,11 +216,13 @@ public class DhtHandler extends SimpleChannelInboundHandler<DatagramPacket> {
         InfoHash.builder().address(sender.getHostString()).port(port).nid(nodeId).infoHash(infoHash).build();
 
         // 发送消息
-        messageStreams.messageChannel().send(MessageBuilder.withPayload(
-                InfoHash.builder()
-                        .address(sender.getHostString())
-                        .port(sender.getPort())
-                        .nid(nodeId)
-                        .infoHash(infoHash)).build());
+        if(null != infoHashStreams) {
+            infoHashStreams.messageChannel().send(MessageBuilder.withPayload(
+                    InfoHash.builder()
+                            .address(sender.getHostString())
+                            .port(sender.getPort())
+                            .nid(nodeId)
+                            .infoHash(infoHash)).build());
+        }
     }
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.okboom.reksai.dht.node.api.domain.Node;
 import org.okboom.reksai.dht.node.domain.Queue;
-import org.okboom.reksai.dht.node.stream.MessageStreams;
+import org.okboom.reksai.dht.node.stream.InfoHashStreams;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Slf4j
 @AllArgsConstructor
 @EnableDiscoveryClient
-@EnableBinding(MessageStreams.class)
+@EnableBinding(InfoHashStreams.class)
 @SpringBootApplication(scanBasePackages = "org.okboom.reksai")
 public class DhtNodeApplication implements CommandLineRunner {
 
