@@ -14,14 +14,33 @@
 
 
     <dependencies>
+        <!-- spring data -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <!-- dubbo -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-dubbo</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.okboom</groupId>
             <artifactId>reksai-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.okboom</groupId>
+            <artifactId>reksai-dht-metadata-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.okboom</groupId>
+            <artifactId>reksai-dht-search-api</artifactId>
         </dependency>
     </dependencies>
 </project>

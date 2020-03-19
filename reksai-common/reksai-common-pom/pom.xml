@@ -39,6 +39,11 @@
                 <artifactId>reksai-common-tool</artifactId>
                 <version>${reksai.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.okboom</groupId>
+                <artifactId>reksai-common-data</artifactId>
+                <version>${reksai.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>cn.hutool</groupId>

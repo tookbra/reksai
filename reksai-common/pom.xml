@@ -18,6 +18,7 @@
         <module>reksai-boot-starter</module>
         <module>reksai-cloud-starter</module>
         <module>reksai-common-tool</module>
+        <module>reksai-common-data</module>
     </modules>
 
 

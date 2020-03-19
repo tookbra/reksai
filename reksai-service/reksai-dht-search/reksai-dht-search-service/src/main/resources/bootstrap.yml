@@ -24,7 +24,14 @@ spring:
         timeout: 10000
   data:
     mongodb:
-      uri: mongodb://127.0.0.1:27017
-      username: reksai
-      password: reksai
-      database: reksai
+      uri: mongodb://reksai:reksai@localhost:27017/reksai
+    elasticsearch:
+      client:
+        reactive:
+          endpoints:
+            - localhost:9200
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+

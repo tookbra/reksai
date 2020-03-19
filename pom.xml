@@ -24,6 +24,7 @@
         <module>reksai-service</module>
         <module>reksai-supports</module>
         <module>reksai-portal</module>
+        <module>reksai-common/reksai-common-data</module>
     </modules>
 
     <properties>
