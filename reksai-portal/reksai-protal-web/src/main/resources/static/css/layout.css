@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+html {
+  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+  word-spacing: 1px;
+  letter-spacing: 1px
+}
+
+/*body,html {*/
+/*  height: 100%*/
+/*}*/
+
+.layout {
+  height: 100%;
+}
+
+.layout .index {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.layout .result {
+  background-color: #f8f8f8;
+  min-height: 100%;
+}
+
+.layout .header-wrap {
+  height: 73px;
+}
+
+.layout .header {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+}
+
+.form .search-form {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.form .search-form .search {
+  width: 100%;
+  font-size: 15px;
+  border-radius: 4px;
+  height: 46px;
+  padding-left: 20px;
+  padding-right: 50px;
+  outline: none;
+  border: 1px solid #ddd;
+  transition: all .3s ease;
+}
+
+.form .search-form .search:focus {
+  border: 1px solid #ff6a00;
+}
+
+
+.form .search-form .search-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 80px;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background: url(https://static-dashengpan.enfi.vip/_nuxt/img/dd7d722.png) no-repeat 50%/30px 30px,linear-gradient(318deg,#fc8a00,#ff6a00) no-repeat;
+}
+
+.header .inner {
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+}
+
+.header .inner a {
+  text-decoration: none;
+}
+
+.header .inner .logo {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.header .inner .logo img {
+  height: 30px;
+  width: auto;
+  margin-right: 5px;
+}
+
+.header .inner .logo h1 {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  color: #ff6a00;
+}
+
+.header .inner .form {
+  width: 800px;
+  max-width: 100%;
+}
+
+.header .inner .form .search-form .search {
+  height: 42px;
+}
+
+.wrap {
+  width: 1060px;
+  max-width: 100%;
+  margin: 50px 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  background-color: #f2f2f2;
+  bottom: 0;
+  font-size: 10pt;
+  height: 80px;
+  position: fixed;
+  width: 100%;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #666;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.copyright p {
+  margin: 5px 0 5px 0;
+}
+

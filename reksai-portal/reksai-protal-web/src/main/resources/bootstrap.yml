@@ -1,11 +1,9 @@
 server:
   port: 8080
-
 spring:
   application:
     name: reksai-protal-web
-  velocity:
-    suffix: .vm
+
   cloud:
     nacos:
       config:
@@ -20,3 +18,13 @@ spring:
         timeout: 10000
   profiles:
     active: dev
+  velocity:
+    prefix: /screen
+    suffix: .vm
+    layout-url: /layout/default.vm
+    layout-key: layout_key
+    screen-content-key: body_content
+
+logging:
+  level:
+    root: debug

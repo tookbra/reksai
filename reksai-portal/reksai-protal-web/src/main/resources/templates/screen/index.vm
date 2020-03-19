@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/index.css">
+<div class="index content">
+    <div class="body">
+        <div class="logo">
+            <img src="images/logo.png"/>
+            <h1>雷克塞</h1>
+        </div>
+        <div class="form">
+            <form class="search-form" action="">
+                <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" />
+                <input type="submit" class="search-btn" value=""/>
+            </form>
+        </div>
+        <div class="hot-words">
+            <div class="inner">
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+                <a href="/" class="hot-item">测试</a>
+            </div>
+        </div>
+    </div>
+</div>

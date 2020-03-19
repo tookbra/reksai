@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/css/detail.css">
+<div class="result content">
+    <div class="header-wrap">
+        <header class="header">
+            <div class="inner">
+                <a href="/">
+                    <div class="logo">
+                        <img src="/images/logo.png"/>
+                        <h1>雷克塞</h1>
+                    </div>
+                </a>
+                <div class="form">
+                    <form action="" class="search-form">
+                        <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" />
+                        <input type="submit" class="search-btn" value=""/>
+                    </form>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="wrap">
+        <div class="detail-page">
+            <div class="detail-content" data-v-7b9e41d7="">
+                <div id="info" data-v-7b9e41d7="">
+                    <div class="detail-wrap" data-v-7b9e41d7="">
+                        <h2 class="detail-header" data-v-7b9e41d7="">
+                            <span data-v-7b9e41d7="">文件夹内部目录</span>
+                        </h2>
+                        <h1 class="filename" data-v-7b9e41d7="">python</h1>
+                        <div class="detail-inner-wrap" data-v-7b9e41d7="">
+                            <div class="detail-item" data-v-7b9e41d7="">
+                                <p class="detail-item-wrap" data-v-7b9e41d7="">
+                                    <span class="detail-item-title" data-v-7b9e41d7="">基础班.tar.gz</span>
+                                    <span data-v-7b9e41d7=""> - 906.84MB</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resource-info" data-v-7b9e41d7="">
+                <span class="meta-item" data-v-7b9e41d7="">
+                  <span class="label" data-v-7b9e41d7="">文件大小：</span>
+                  906.84MB
+                </span>
+                        <span class="meta-item" data-v-7b9e41d7="">
+                  <span class="label" data-v-7b9e41d7="">更新时间：</span>
+                  2017-04-06
+                </span>
+                        <span data-v-7b9e41d7="">内容来源：52搜盘</span>
+                    </div>
+                    <div class="button-wrap" data-v-7b9e41d7="">
+                        <div class="button-inner" data-v-7b9e41d7="">
+                            <a href="javascript:void(0);" class="button" data-v-7b9e41d7="">
+                                在线观看
+                            </a>
+                        </div>
+                        <div class="button-inner baidu-button-inner" data-v-7b9e41d7="">
+                            <a target="_blank" href="https://pan.baidu.com/s/1dEJkdsX" class="button" data-v-7b9e41d7="">下载</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="statement" data-v-7b9e41d7="">
+                    <h2 data-v-7b9e41d7="">相关声明</h2>
+                    <p data-v-7b9e41d7="">
+                        『python』资源内容来源于磁力网络
+                    </p>
+                    <p data-v-7b9e41d7="">
+                        此页面内容由搜索引擎爬虫自动抓取，以非人工方式自动生成，只作交流和学习使用，雷克塞本身不储存、复制、传播任何文件，其资源的有效性和安全性需要您自行判断。雷克塞在免费提供服务的同时高度重视知识产权保护，如有侵犯您的合法权益或违法违规，请立即提供相关有效书面证明与侵权页面链接联系我们进行删除。感谢您对雷克塞的支持。
+                    </p>
+                </div>
+                <div id="random" data-v-7b9e41d7="">
+                    <h2 data-v-7b9e41d7="">更多资源</h2>
+                    <div class="random-inner content-inner" data-v-7b9e41d7="">
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/bff78a83138e335e637debc129f8eba1" target="_blank" data-v-7b9e41d7="" class="">
+                                云鹤直通车VIP教程 基础系列 02 云鹤《直通车的完整操作流程 02 宝贝上车全过程》.mp4
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/63b9a675bd2b73fee46701ae999a2901" target="_blank" data-v-7b9e41d7="" class="">
+                                《天道人心》拯救人类.pdf
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/86f017d4df3e867c46527fbe077d33f3" target="_blank" data-v-7b9e41d7="" class="">
+                                《一条四爷，二饼福晋》作者：元月月半.txt
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/b070df690eb8c58b81b4fa54ca1016b3" target="_blank" data-v-7b9e41d7="" class="">
+                                哇哇.rar
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/f24ecd35f2f2d9465d17c381291fcac3" target="_blank" data-v-7b9e41d7="" class="">
+                                我怀念的.mp3
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/32b7e985d7272c0903f50a5bac850905" target="_blank" data-v-7b9e41d7="" class="">
+                                Flyable CandyHeart.rar
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/92fa9a22d4001bd7d5111c413a21f5c0" target="_blank" data-v-7b9e41d7="" class="">
+                                191029-Voice-RJ268053.part2.rar
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/57c847a19f52d31e4ef7df571145c765" target="_blank" data-v-7b9e41d7="" class="">
+                                2039时空悍将
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/977fa71ad7c310a9076d2487af88faad" target="_blank" data-v-7b9e41d7="" class="">
+                                dsqm161
+                            </a>
+                        </h3>
+                        <h3 data-v-7b9e41d7="">
+                            <a href="/detail/29f493c06808bdda732ddbd41de1ef89" target="_blank" data-v-7b9e41d7="" class="">
+                                詩織.7z
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

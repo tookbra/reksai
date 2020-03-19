@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/css/search.css">
+<div class="result content">
+    <div class="header-wrap">
+        <header class="header">
+            <div class="inner">
+                <a href="/">
+                    <div class="logo">
+                        <img src="images/logo.png"/>
+                        <h1>雷克塞</h1>
+                    </div>
+                </a>
+                <div class="form">
+                    <form action="" class="search-form">
+                        <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" />
+                        <input type="submit" class="search-btn" value=""/>
+                    </form>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div class="wrap">
+        <div class="search-result">
+            <div class="filter"></div>
+            <div class="inner">
+                <p class="tip"></p>
+                <div class="main">
+                    <div target="_blank" class="resource-item-wrap valid">
+                        <div class="resource-item">
+                            <div class="resource-info">
+                                <h1 class="resource-title">
+                                    <img src="https://static-dashengpan.enfi.vip/_nuxt/img/c3893be.png" alt="<mark>沙发</mark>" class="filetype">
+                                    <a href="/detail.html" target="_blank" class="valid">
+                                        <mark>沙发</mark>
+                                    </a>
+                                </h1>
+                                <hr/>
+                                <div class="resource-meta">
+                      <span class="meta-item">
+                        <span class="label">文件大小</span>
+                        <span class="em">280.55MB</span>
+                      </span>
+                                    <span class="meta-item">
+                        <span class="label">文件格式</span>
+                        <span class="em">mp4</span>
+                      </span>
+                                    <span class="meta-item">
+                        <span class="label">创建时间</span>
+                        <span class="em">2020-03-19</span>
+                      </span>
+                                    <span class="meta-item">
+                        <span class="label">在线观看</span>
+                        <span class="em">下载</span>
+                      </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pager-wrap">
+                    <div class="pc-pager-wrap" data-v-76926de7="">
+                        <a href="/" class="pager-item active" data-v-76926de7="">1</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">2</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">3</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">4</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">5</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">6</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">7</a>
+                        <span class="pager-mark pager-item" data-v-76926de7="">...</span>
+                        <a href="/" class="pager-item" data-v-76926de7="">299</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">300</a>
+                        <a href="/" class="pager-item" data-v-76926de7="">下一页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
