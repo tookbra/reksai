@@ -41,8 +41,4 @@ public class TorrentDocument {
      * 创建时间
      */
     private long createDate;
-    /**
-     * 文件
-     */
-    private String files;
 }

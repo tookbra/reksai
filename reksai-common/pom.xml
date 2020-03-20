@@ -19,6 +19,7 @@
         <module>reksai-cloud-starter</module>
         <module>reksai-common-tool</module>
         <module>reksai-common-data</module>
+        <module>reksai-mybatis-starter</module>
     </modules>
 
 

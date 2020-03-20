@@ -24,6 +24,8 @@
         <module>reksai-service</module>
         <module>reksai-supports</module>
         <module>reksai-portal</module>
+        <module>reksai-ops</module>
+        <module>reksai-common/reksai-job-starter</module>
     </modules>
 
     <properties>
