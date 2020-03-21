@@ -15,12 +15,11 @@
  */
 package com.alibaba.nacos.console.filter;
 
-import com.alibaba.nacos.api.common.Constants;
-import com.alibaba.nacos.console.security.nacos.JwtTokenManager;
-import com.alibaba.nacos.console.security.nacos.NacosAuthConfig;
-import org.apache.commons.lang3.StringUtils;
+import com.alibaba.nacos.console.config.WebSecurityConfig;
+import com.alibaba.nacos.console.utils.JwtTokenUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -38,23 +37,29 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     private static final String TOKEN_PREFIX = "Bearer ";
 
-    private JwtTokenManager tokenManager;
+    private JwtTokenUtils tokenProvider;
 
-    public JwtAuthenticationTokenFilter(JwtTokenManager tokenManager) {
-        this.tokenManager = tokenManager;
+    public JwtAuthenticationTokenFilter(JwtTokenUtils tokenProvider) {
+        this.tokenProvider = tokenProvider;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-        throws IOException, ServletException {
-
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String jwt = resolveToken(request);
 
-        if (StringUtils.isNotBlank(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
-            this.tokenManager.validateToken(jwt);
-            Authentication authentication = this.tokenManager.getAuthentication(jwt);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (jwt != null && !"".equals(jwt.trim()) && SecurityContextHolder.getContext().getAuthentication() == null) {
+            if (this.tokenProvider.validateToken(jwt)) {
+                /**
+                 * get auth info
+                 */
+                Authentication authentication = this.tokenProvider.getAuthentication(jwt);
+                /**
+                 * save user info to securityContext
+                 */
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
         }
+
         chain.doFilter(request, response);
     }
 
@@ -62,12 +67,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
      * Get token from header
      */
     private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(NacosAuthConfig.AUTHORIZATION_HEADER);
-        if (StringUtils.isNotBlank(bearerToken) && bearerToken.startsWith(TOKEN_PREFIX)) {
-            return bearerToken.substring(7);
+        String bearerToken = request.getHeader(WebSecurityConfig.AUTHORIZATION_HEADER);
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(TOKEN_PREFIX)) {
+            return bearerToken.substring(7, bearerToken.length());
         }
-        String jwt = request.getParameter(Constants.ACCESS_TOKEN);
-        if (StringUtils.isNotBlank(jwt)) {
+        String jwt = request.getParameter(WebSecurityConfig.AUTHORIZATION_TOKEN);
+        if (StringUtils.hasText(jwt)) {
             return jwt;
         }
         return null;
