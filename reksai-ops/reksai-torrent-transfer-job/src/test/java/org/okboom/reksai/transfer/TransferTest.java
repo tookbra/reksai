@@ -66,7 +66,7 @@ public class TransferTest {
                         torrentDocument.setFileName(searchInfoHash.getName());
                         torrentDocument.setFileSize(searchInfoHash.getLength());
                         torrentDocument.setFileType(searchInfoHash.getCategory());
-                        torrentDocument.setCreateDate(searchInfoHash.getCreateTime().getTime());
+                        torrentDocument.setCreateDate(searchInfoHash.getCreateTime());
                         queries.add(torrentDocument);
                     });
                     torrentIndexRepository.saveAll(queries);

@@ -3,9 +3,10 @@ package org.okboom.reksai.dht.search.domain;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.okboom.reksai.dht.search.common.FieldAnalyzer;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.*;
+
+import java.time.LocalDateTime;
 
 /**
  * @author tookbra
@@ -36,8 +37,9 @@ public class TorrentDocument {
      * 文件大小
      */
     private Long fileSize;
+
     /**
      * 创建时间
      */
-    private Long createDate;
+    private LocalDateTime createDate;
 }
