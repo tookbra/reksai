@@ -1,0 +1,25 @@
+{
+  "index": {
+    "number_of_shards": "2",
+    "number_of_replicas": "1",
+    "analysis": {
+      "char_filter": {
+        "tsconvert": {
+          "type": "stconvert",
+          "convert_type": "t2s"
+        }
+      },
+
+      "analyzer": {
+        "ikSearchAnalyzer": {
+          "type": "custom",
+          "tokenizer": "ik_max_word",
+          "char_filter": [
+            "tsconvert"
+          ]
+        }
+      }
+
+    }
+  }
+}

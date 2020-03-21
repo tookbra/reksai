@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://reksai:reksai@localhost:27017/reksai
+    elasticsearch:
+      client:
+        reactive:
+          endpoints:
+            - localhost:9200
+
+# dubbo
+dubbo:
+  registry:
+    address: spring-cloud://localhost
+  protocol:
+    port: -1
+    name: dubbo
+  scan:
+    base-packages: org.okboom.reksai.dht.search.service

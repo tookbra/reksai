@@ -1,0 +1,30 @@
+{
+  "builder": {
+    "properties": {
+      "infoHash": {
+        "type": "text"
+      },
+      "fileName": {
+        "type": "text",
+        "analyzer": "ikSearchAnalyzer",
+        "search_analyzer": "ikSearchAnalyzer"
+      },
+      "fileType": {
+        "type": "text"
+      },
+      "fileSize": {
+        "type": "long"
+      },
+      "createDate": {
+        "type": "long"
+      },
+      "query": {
+        "properties": {
+          "match_all": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

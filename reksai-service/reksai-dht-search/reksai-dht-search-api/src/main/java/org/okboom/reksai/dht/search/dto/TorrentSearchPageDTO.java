@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 import org.okboom.reksai.data.support.Query;
 
+import javax.validation.constraints.NotEmpty;
+
 /**
  * @author tookbra
  */
@@ -16,6 +18,7 @@ public class TorrentSearchPageDTO extends Query {
     /**
      * 文件名
      */
+    @NotEmpty
     private String fileName;
     /**
      * 文件类型

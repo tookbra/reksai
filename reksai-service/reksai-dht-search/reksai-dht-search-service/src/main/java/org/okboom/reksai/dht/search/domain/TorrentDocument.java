@@ -5,9 +5,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 import org.okboom.reksai.dht.search.common.FieldAnalyzer;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.data.elasticsearch.annotations.Field;
-import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.*;
 
 /**
  * @author tookbra
@@ -16,6 +14,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @ToString
 @Accessors(chain = true)
 @Document(indexName = "reksai", type = "torrent")
+@Mapping(mappingPath = "/config/es/torrent-mapping.json")
+@Setting(settingPath = "/config/es/builder-setting.json")
 public class TorrentDocument {
 
     /**
@@ -29,16 +29,15 @@ public class TorrentDocument {
     private String fileType = "其他";
     /***
      * 文件名
+     * 不起作用 @Field(type = FieldType.Text, analyzer = FieldAnalyzer.IK_MAX_WORD, searchAnalyzer = FieldAnalyzer.IK_SMART)
      */
-    @Field(type = FieldType.Text, analyzer = FieldAnalyzer.IK_MAX_WORD, searchAnalyzer = FieldAnalyzer.IK_SMART)
     private String fileName;
     /**
      * 文件大小
      */
-    @Field(type = FieldType.Long)
-    private long fileSize;
+    private Long fileSize;
     /**
      * 创建时间
      */
-    private long createDate;
+    private Long createDate;
 }

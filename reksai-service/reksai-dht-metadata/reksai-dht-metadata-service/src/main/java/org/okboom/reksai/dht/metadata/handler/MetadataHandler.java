@@ -165,8 +165,8 @@ public class MetadataHandler extends SimpleChannelInboundHandler<ByteBuf> {
                 log.info("metadata:{}", HexUtil.encodeHexStr(metadata));
                 Map map = BencodingUtils.decode(metadata);
                 if (map != null) {
-                    Metadata Metadata = TorrentUtil.parseTorrent(infoHash, map);
-                    log.info("Metadata:{}", Metadata.toString());
+                    Metadata metadata = TorrentUtil.parseTorrent(infoHash, map);
+                    log.info("Metadata:{}", metadata.toString());
                     // 发送消息
                     if(null != metadataStreams) {
                         metadataStreams.messageChannel().send(MessageBuilder.withPayload(metadata)

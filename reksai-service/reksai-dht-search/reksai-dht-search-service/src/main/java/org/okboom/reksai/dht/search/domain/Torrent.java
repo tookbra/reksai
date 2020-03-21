@@ -29,11 +29,11 @@ public class Torrent implements Serializable {
     /**
      * 文件大小
      */
-    private long fileSize;
+    private Long fileSize;
     /**
      * 创建时间
      */
-    private long createDate;
+    private Long createDate;
     /**
      * 文件
      */

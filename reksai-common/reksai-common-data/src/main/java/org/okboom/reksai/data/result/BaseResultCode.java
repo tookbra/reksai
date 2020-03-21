@@ -18,7 +18,11 @@ public enum BaseResultCode implements ResultCode {
     /**
      * 业务异常
      */
-    FAILURE(500, "业务异常");
+    FAILURE(500, "业务异常"),
+    /**
+     * 参数错误
+     */
+    PARAMETER_VALIDATE_FAILURE(10001, "参数错误");
 
     /**
      * 代码

@@ -8,15 +8,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
 
-    <artifactId>reksai-common-data</artifactId>
+    <artifactId>reksai-dubbo-starter</artifactId>
+    <packaging>jar</packaging>
 
 
     <dependencies>
+        <!-- dubbo -->
         <dependency>
-            <groupId>org.okboom</groupId>
-            <artifactId>reksai-common-tool</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -15,16 +15,33 @@
         <dependency>
             <groupId>org.okboom</groupId>
             <artifactId>reksai-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-stream</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.okboom</groupId>
+            <artifactId>reksai-dht-search-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- dubbo -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>velocity-spring-boot-starter</artifactId>
             <version>1.0.4.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

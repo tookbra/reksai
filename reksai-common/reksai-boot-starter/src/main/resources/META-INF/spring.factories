@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.okboom.reksai.boot.config.ExecutorConfiguration
+org.okboom.reksai.boot.config.ExecutorConfiguration,\
+org.okboom.reksai.boot.advice.ViewExceptionAdvice

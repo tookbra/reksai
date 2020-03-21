@@ -40,7 +40,7 @@ public class TorrentIndexRepositoryTest {
         torrent.setInfoHash("42d5bb189d0ce71ce66cf14220483e163805b73c");
         torrent.setFileType("图片,音频1");
         torrent.setFileName("我爱写代码");
-        torrent.setFileSize(277959244);
+        torrent.setFileSize(277959244L);
         torrent.setCreateDate(1584532261018L);
 
 //        IndexQuery indexQuery = new IndexQueryBuilder()
@@ -76,7 +76,7 @@ public class TorrentIndexRepositoryTest {
         Pageable pageable = PageRequest.of(0, 10);
         String[] fields = new String[] { "fileName" };
         TorrentDocument torrentDocument = new TorrentDocument();
-        torrentDocument.setInfoHash("42d5bb189d0ce71ce66cf14220483e163805b73c");
+        torrentDocument.setInfoHash("057dc0a1bd3e46ba3b96af47236adb29804aec90");
         //
         Page<TorrentDocument> page = torrentIndexRepository.searchSimilar(torrentDocument, fields, pageable);
         System.out.println(1);
@@ -87,13 +87,15 @@ public class TorrentIndexRepositoryTest {
         Pageable pageable = PageRequest.of(0, 10);
         String[] fields = new String[] { "fileName" };
         MoreLikeThisQuery query = new MoreLikeThisQuery();
-        query.setId("42d5bb189d0ce71ce66cf14220483e163805b73c");
+        query.setId("057dc0a1bd3e46ba3b96af47236adb29804aec90");
         query.setPageable(pageable);
         query.setMinTermFreq(1);
         if (fields != null) {
             query.addFields(fields);
         }
         Page<TorrentDocument> page =  elasticsearchOperations.moreLikeThis(query, TorrentDocument.class);
+
+
         System.out.println(page.getContent().toString());
 
     }

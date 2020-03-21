@@ -3,19 +3,22 @@ server:
 spring:
   application:
     name: reksai-protal-web
-
   cloud:
     nacos:
       config:
-        serverAddr: 'http://console.nacos.io'
+        serverAddr: 'http://localhost:8848'
         file-extension: yml
         timeout: 10000
         sharedConfigs:
           dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
           refresh: true
+        namespace: f5304245-c028-4480-ab18-186fc729ebbc
+        group: reksai
       discovery:
-        serverAddr: 'http://console.nacos.io'
+        serverAddr: 'http://localhost:8848'
         timeout: 10000
+        namespace: f5304245-c028-4480-ab18-186fc729ebbc
+        group: reksai
   profiles:
     active: dev
   velocity:

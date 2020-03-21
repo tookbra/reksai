@@ -1,0 +1,9 @@
+# dubbo
+dubbo:
+  registry:
+    address: spring-cloud://localhost
+  protocol:
+    port: -1
+    name: dubbo
+  scan:
+    base-packages: org.okboom.reksai.dht.web.service
