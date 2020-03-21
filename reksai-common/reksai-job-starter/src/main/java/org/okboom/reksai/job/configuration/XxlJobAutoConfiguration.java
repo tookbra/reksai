@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("org.okboom.reksai.job.properties")
 public class XxlJobAutoConfiguration {
 
-    @Bean(initMethod = "start", destroyMethod = "destroy")
     public XxlJobSpringExecutor xxlJobSpringExecutor(XxlJobProperties xxlJobProperties) {
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
         xxlJobSpringExecutor.setAdminAddresses(xxlJobProperties.getAdmin().getAddresses());
