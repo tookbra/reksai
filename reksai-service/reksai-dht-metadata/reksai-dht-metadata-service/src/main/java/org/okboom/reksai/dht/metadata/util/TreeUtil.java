@@ -1,7 +1,8 @@
 package org.okboom.reksai.dht.metadata.util;
 
 
-import org.okboom.reksai.dht.metadata.domain.Node;
+
+import org.okboom.reksai.dht.metadata.api.domain.FileNode;
 
 import java.util.List;
 
@@ -10,13 +11,13 @@ import java.util.List;
  */
 public class TreeUtil {
 
-	public static Node createTree(List<Node> nodes) {
-		Node root = new Node(0, -1);
+	public static FileNode createTree(List<FileNode> nodes) {
+		FileNode root = new FileNode(0, -1);
 		nodes.forEach(node -> {
 			if(node.getPid() == root.getNid()) {
 				root.addChild(node);
 			} else {
-				Node parent = findParent(root, node.getPid());
+				FileNode parent = findParent(root, node.getPid());
 				if (parent != null) {
 					parent.addChild(node);
 				}
@@ -25,9 +26,9 @@ public class TreeUtil {
 		return root;
 	}
 	
-	private static Node findParent(Node node, int pid) {
-		Node result = null;
-		for (Node n : node.getChildren()) {
+	private static FileNode findParent(FileNode node, int pid) {
+		FileNode result = null;
+		for (FileNode n : node.getChildren()) {
 			if (n.getNid() == pid) {
 				return n;
 			} else {

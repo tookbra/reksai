@@ -2,9 +2,8 @@ package org.okboom.reksai.dht.metadata.util;
 
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
 import org.okboom.reksai.dht.metadata.api.domain.Metadata;
-import org.okboom.reksai.dht.metadata.domain.Node;
+import org.okboom.reksai.dht.metadata.api.domain.FileNode;
 import org.okboom.reksai.tool.StringUtil;
 
 import java.math.BigInteger;
@@ -143,7 +142,7 @@ public final class TorrentUtil {
 
         long total = 0;
         int i = 0;
-        List<Node> nodes = new ArrayList<>();
+        List<FileNode> nodes = new ArrayList<>();
         int cur = 1, parent = 0;
         for (Map<String, Object> f : list) {
             long length = ((BigInteger) f.get("length")).longValue();
@@ -166,7 +165,7 @@ public final class TorrentUtil {
                         types.add(type);
                     }
                 }
-                Node node = new Node(cur, j == 0 ? 0 : parent, sname, fileSize, i);
+                FileNode node = new FileNode(cur, j == 0 ? 0 : parent, sname, fileSize, i);
                 if (!nodes.contains(node)) {
                     nodes.add(node);
                     parent = cur;
@@ -178,9 +177,9 @@ public final class TorrentUtil {
             }
             i++;
         }
-        Node node = TreeUtil.createTree(nodes);
+        FileNode node = TreeUtil.createTree(nodes);
         Metadata.setFileSize(total);
-        Metadata.setFiles(JSONUtil.toJsonStr(node));
+        Metadata.setFiles(node);
         if (types.size() <= 0) {
             types.add("其他");
         }

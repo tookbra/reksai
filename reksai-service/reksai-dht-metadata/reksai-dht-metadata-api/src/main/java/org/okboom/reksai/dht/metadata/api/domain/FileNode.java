@@ -1,4 +1,4 @@
-package org.okboom.reksai.dht.metadata.domain;
+package org.okboom.reksai.dht.metadata.api.domain;
 
 import lombok.Data;
 import lombok.ToString;
@@ -7,9 +7,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 @Data
 @ToString
-public class Node implements Serializable {
+public class FileNode implements Serializable {
 
 	/**
 	 * id
@@ -30,22 +33,22 @@ public class Node implements Serializable {
 
 	private int index;
 
-	private List<Node> children;
+	private List<FileNode> children;
 	
-	public void addChild(Node node) {
+	public void addChild(FileNode node) {
 		if (children == null) {
 			children = new ArrayList<>();
 		}
 		children.add(node);
 	}
 
-	public Node(int nid, int pid) {
+	public FileNode(int nid, int pid) {
 		super();
 		this.nid = nid;
 		this.pid = pid;
 	}
 	
-	public Node(int nid, int pid, String filename, Long filesize, int index) {
+	public FileNode(int nid, int pid, String filename, Long filesize, int index) {
 		super();
 		this.nid = nid;
 		this.pid = pid;
@@ -73,7 +76,7 @@ public class Node implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Node other = (Node) obj;
+		FileNode other = (FileNode) obj;
 		if (filename == null) {
 			if (other.filename != null)
 				return false;

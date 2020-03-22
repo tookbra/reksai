@@ -35,5 +35,5 @@ public class Metadata implements Serializable {
     /**
      * 文件
      */
-    private String files;
+    private FileNode files;
 }
