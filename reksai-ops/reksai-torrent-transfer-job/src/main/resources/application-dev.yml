@@ -1,0 +1,18 @@
+reksai:
+  xxl:
+    job:
+      admin:
+        addresses: http://127.0.0.1:40001/xxl-job-admin
+      executor:
+        appName: transfer-job-executor
+        port: -1
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://reksai:reksai@localhost:27017/reksai
+    elasticsearch:
+      client:
+        reactive:
+          endpoints:
+            - localhost:9200

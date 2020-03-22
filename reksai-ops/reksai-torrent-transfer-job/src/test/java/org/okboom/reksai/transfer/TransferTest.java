@@ -7,9 +7,11 @@ import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.okboom.reksai.transfer.domain.SearchInfoHash;
+import org.okboom.reksai.transfer.domain.Torrent;
 import org.okboom.reksai.transfer.domain.TorrentDocument;
 import org.okboom.reksai.transfer.mapper.SearchInfoHashMapper;
 import org.okboom.reksai.transfer.repository.TorrentIndexRepository;
+import org.okboom.reksai.transfer.repository.TorrentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -30,6 +32,9 @@ public class TransferTest {
 
     @Autowired
     TorrentIndexRepository torrentIndexRepository;
+
+    @Autowired
+    TorrentRepository torrentRepository;
 
 
     @Test
@@ -60,6 +65,7 @@ public class TransferTest {
                 List<SearchInfoHash> searchInfoHashes = page.getRecords();
                 if(CollectionUtils.isNotEmpty(searchInfoHashes)) {
                     List<TorrentDocument> queries = new ArrayList();
+                    List<Torrent> torrents = new ArrayList<>();
                     iPage.getRecords().forEach(searchInfoHash ->  {
                         TorrentDocument torrentDocument = new TorrentDocument();
                         torrentDocument.setInfoHash(searchInfoHash.getInfoHash());
@@ -68,8 +74,12 @@ public class TransferTest {
                         torrentDocument.setFileType(searchInfoHash.getCategory());
                         torrentDocument.setCreateDate(searchInfoHash.getCreateTime());
                         queries.add(torrentDocument);
+
+                        Torrent torrent = new Torrent();
+                        torrents.add(torrent);
                     });
                     torrentIndexRepository.saveAll(queries);
+                    torrentRepository.saveAll(torrents);
                 }
                 System.out.println("===============" + finalI + "==============");
                 countDownLatch.countDown();
