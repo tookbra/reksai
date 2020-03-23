@@ -69,6 +69,11 @@
                 <artifactId>reksai-dubbo-starter</artifactId>
                 <version>${reksai.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.okboom</groupId>
+                <artifactId>reksai-mongo-starter</artifactId>
+                <version>${reksai.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>cn.hutool</groupId>

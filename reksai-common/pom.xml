@@ -22,6 +22,7 @@
         <module>reksai-mybatis-starter</module>
         <module>reksai-job-starter</module>
         <module>reksai-dubbo-starter</module>
+        <module>reksai-mongo-starter</module>
     </modules>
 
 
