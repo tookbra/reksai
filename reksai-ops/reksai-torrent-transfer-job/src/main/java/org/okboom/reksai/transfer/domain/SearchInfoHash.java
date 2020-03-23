@@ -27,4 +27,6 @@ public class SearchInfoHash implements Serializable {
 
     private LocalDateTime createTime;
 
+    private String fileList;
+
 }

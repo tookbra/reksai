@@ -14,14 +14,14 @@ spring:
   cloud:
     nacos:
       config:
-        serverAddr: 'http://nacos.didispace.com'
+        serverAddr: 'http://localhost:8848'
         file-extension: yml
         timeout: 10000
         sharedConfigs:
           dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
           refresh: true
       discovery:
-        serverAddr: 'http://nacos.didispace.com'
+        serverAddr: 'http://localhost:8848'
         timeout: 10000
   datasource:
     url: jdbc:mysql://localhost:3306/ssbc?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
@@ -43,7 +43,7 @@ spring:
 
 #mybatis-plus配置
 mybatis-plus:
-  mapper-locations: classpath:org/okboom/reksai/**/mapper/*Mapper.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
   typeAliasesPackage: org.okboom.reksai.**.domain
   global-config:
     banner: false

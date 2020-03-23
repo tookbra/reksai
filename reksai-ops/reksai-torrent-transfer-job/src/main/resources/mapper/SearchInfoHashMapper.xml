@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.okboom.reksai.transfer.mapper.SearchInfoHashMapper">
+
+    <resultMap id="searchInfoHashMap" type="org.okboom.reksai.transfer.domain.SearchInfoHash">
+        <result column="info_hash" property="infoHash"/>
+        <result column="category" property="category"/>
+        <result column="extension" property="extension"/>
+        <result column="length" property="length"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+        <result column="filelist" property="fileList"/>
+    </resultMap>
+
+    <select id="pageInfoHashes" resultMap="searchInfoHashMap">
+        SELECT
+            a.info_hash,
+            a.category,
+            a.extension,
+            a.length,
+            a.name,
+            a.create_time,
+            b.filelist
+        FROM
+            search_hash a
+            LEFT JOIN search_filelist b ON a.info_hash = b.info_hash
+    </select>
+</mapper>
