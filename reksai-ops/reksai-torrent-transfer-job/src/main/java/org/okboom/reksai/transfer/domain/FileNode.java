@@ -34,6 +34,8 @@ public class FileNode implements Serializable {
 	private int index;
 
 	private List<FileNode> children;
+
+	public FileNode() {}
 	
 	public void addChild(FileNode node) {
 		if (children == null) {
