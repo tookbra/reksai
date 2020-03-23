@@ -1,0 +1,7 @@
+spring:
+  boot:
+    admin:
+      notify:
+        dingtalk:
+          enabled: true
+          auth-token: https://oapi.dingtalk.com/robot/send?access_token=c8cdeb28a6281ec3c2288a6a87189d1593b87048c8e99a576f720f62ad1b3667

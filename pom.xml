@@ -36,6 +36,7 @@
         <spring.boot.version>2.2.5.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR3</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.0.RELEASE</spring.cloud.alibaba.version>
+        <spring.boot.admin.version>2.2.2</spring.boot.admin.version>
         <netty.version>4.1.47.Final</netty.version>
         <lombok.version>1.18.12</lombok.version>
     </properties>
