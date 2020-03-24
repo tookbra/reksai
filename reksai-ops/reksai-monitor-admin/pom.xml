@@ -17,6 +17,12 @@
         <dependency>
             <groupId>org.okboom</groupId>
             <artifactId>reksai-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.okboom</groupId>
+                    <artifactId>reksai-mongo-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- 监控服务端 -->
