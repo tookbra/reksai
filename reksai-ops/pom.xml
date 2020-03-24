@@ -15,6 +15,7 @@
         <module>reksai-torrent-transfer-job</module>
         <module>reksai-xxl-job-admin</module>
         <module>reksai-monitor-admin</module>
+        <module>reksai-sentinel-admin</module>
     </modules>
 
 
