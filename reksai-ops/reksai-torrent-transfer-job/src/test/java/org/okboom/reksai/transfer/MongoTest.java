@@ -2,7 +2,7 @@ package org.okboom.reksai.transfer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.okboom.reksai.transfer.domain.Torrent;
+import org.okboom.reksai.dht.domain.Torrent;
 import org.okboom.reksai.transfer.repository.TorrentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

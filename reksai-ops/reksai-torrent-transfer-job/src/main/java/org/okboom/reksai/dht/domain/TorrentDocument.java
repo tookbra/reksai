@@ -1,4 +1,4 @@
-package org.okboom.reksai.transfer.domain;
+package org.okboom.reksai.dht.domain;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -29,10 +29,17 @@ public class TorrentDocument {
      * infoHash
      */
     @Id
+    @Field("info_hash")
     private String infoHash;
+
+    /**
+     * 摘要
+     */
+    private String summary;
     /**
      * 文件类型
      */
+    @Field("file_type")
     private String fileType = "其他";
     /***
      * 文件名
@@ -42,12 +49,12 @@ public class TorrentDocument {
     /**
      * 文件大小
      */
-    @Field(type = FieldType.Long)
+    @Field(type = FieldType.Long, name = "file_size")
     private long fileSize;
     /**
      * 创建时间
      */
-    @Field(type = FieldType.Date)
+    @Field(type = FieldType.Date, name = "create_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd\'T\'HH:mm:ss.SSS")
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)

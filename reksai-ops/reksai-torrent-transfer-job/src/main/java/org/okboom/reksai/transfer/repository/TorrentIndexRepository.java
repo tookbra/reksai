@@ -1,6 +1,6 @@
 package org.okboom.reksai.transfer.repository;
 
-import org.okboom.reksai.transfer.domain.TorrentDocument;
+import org.okboom.reksai.dht.domain.TorrentDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 

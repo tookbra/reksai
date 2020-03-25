@@ -1,5 +1,6 @@
 package org.okboom.reksai.transfer;
 
+import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -10,8 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.okboom.reksai.transfer.domain.FileNode;
 import org.okboom.reksai.transfer.domain.SearchInfoHash;
-import org.okboom.reksai.transfer.domain.Torrent;
-import org.okboom.reksai.transfer.domain.TorrentDocument;
+import org.okboom.reksai.dht.domain.Torrent;
+import org.okboom.reksai.dht.domain.TorrentDocument;
 import org.okboom.reksai.transfer.mapper.SearchInfoHashMapper;
 import org.okboom.reksai.transfer.repository.TorrentIndexRepository;
 import org.okboom.reksai.transfer.repository.TorrentRepository;
@@ -84,6 +85,7 @@ public class TransferTest {
                     torrent.setFileSize(searchInfoHash.getLength());
                     torrent.setFileType(searchInfoHash.getCategory());
                     torrent.setCreateDate(searchInfoHash.getCreateTime());
+                    torrent.setSummary(SecureUtil.md5(searchInfoHash.getInfoHash()));
                     FileNode node = TreeUtil.createTree(nodes);
                     torrent.setFiles(node);
 
@@ -118,6 +120,7 @@ public class TransferTest {
                     torrentDocument.setFileSize(searchInfoHash.getLength());
                     torrentDocument.setFileType(searchInfoHash.getCategory());
                     torrentDocument.setCreateDate(searchInfoHash.getCreateTime());
+                    torrentDocument.setSummary(SecureUtil.md5(searchInfoHash.getInfoHash()));
                     queries.add(torrentDocument);
                 });
                 torrentIndexRepository.saveAll(queries);

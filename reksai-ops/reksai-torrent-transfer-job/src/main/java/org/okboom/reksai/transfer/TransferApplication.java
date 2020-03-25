@@ -2,8 +2,7 @@ package org.okboom.reksai.transfer;
 
 import lombok.AllArgsConstructor;
 import org.okboom.reksai.job.annotation.EnableXxlJob;
-import org.okboom.reksai.transfer.domain.Torrent;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.okboom.reksai.dht.domain.Torrent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
