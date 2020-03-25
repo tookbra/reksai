@@ -1,6 +1,41 @@
+.result .wrap {
+  min-height: calc(100vh - 203px);
+}
+
 .detail-page .detail-content {
   width: 800px;
   max-width: 100%;
+}
+
+.detail-page .compatible-wrap img {
+  width: 200px;
+}
+
+.detail-page .compatible-wrap p {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.detail-page .compatible-wrap .hot-wrap {
+  margin-top: 30px;
+}
+
+.detail-page .compatible-wrap .hot-wrap .none-tip {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.detail-page .compatible-wrap p {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.detail-page .compatible-wrap {
+  padding: 30px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
 .detail-page #info {

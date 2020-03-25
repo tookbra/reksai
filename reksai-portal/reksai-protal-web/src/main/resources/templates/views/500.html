@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="/layout/head :: head"></head>
+<link rel="stylesheet" href="/css/detail.css">
+<body>
+<div class="layout">
+    <div class="result content">
+        <div class="header-wrap">
+            <header class="header">
+                <div class="inner">
+                    <a href="/">
+                        <div class="logo">
+                            <img src="/images/logo.png"/>
+                            <h1>雷克塞</h1>
+                        </div>
+                    </a>
+                    <div class="form">
+                        <form action="" class="search-form">
+                            <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" />
+                            <input type="submit" class="search-btn" value=""/>
+                        </form>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="wrap">
+            <div class="detail-page">
+                <div class="detail-content">
+                    <div class="compatible-wrap">
+                        <img src="/images/empty.png" alt="该链接现在已经转移" class="empty-image">
+                        <p>服务异常</p>
+                    </div>
+                    <div id="statement">
+                        <h2 data-v-7b9e41d7="">相关声明</h2>
+                        <p data-v-7b9e41d7="">
+                            此页面内容由搜索引擎爬虫自动抓取，以非人工方式自动生成，只作交流和学习使用，雷克塞本身不储存、复制、传播任何文件，其资源的有效性和安全性需要您自行判断。雷克塞在免费提供服务的同时高度重视知识产权保护，如有侵犯您的合法权益或违法违规，请立即提供相关有效书面证明与侵权页面链接联系我们进行删除。感谢您对雷克塞的支持。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/layout/footer :: copyright"></div>
+    <script src="/js/search.js"></script>
+</div>
+</body>
+</html>

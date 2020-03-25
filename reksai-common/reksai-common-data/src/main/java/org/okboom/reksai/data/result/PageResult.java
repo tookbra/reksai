@@ -13,21 +13,9 @@ import lombok.ToString;
 @ToString
 public class PageResult<T> extends Result<T> {
 
+    private Pager pager;
 
-    /**
-     * 总数
-     */
-    private Long total = 0L;
-
-    /**
-     * 当前页
-     */
-    private Long current = 1L;
-
-    /**
-     * 总页数
-     */
-    private Long size;
+    public PageResult() {}
 
     private PageResult(ResultCode resultCode, String msg) {
         super(resultCode, null, msg);
@@ -41,10 +29,9 @@ public class PageResult<T> extends Result<T> {
         super(code, data, msg);
     }
 
-    private PageResult(T data, Long current, Long total) {
+    private PageResult(T data, Pager pager) {
         super(BaseResultCode.SUCCESS.code, data, BaseResultCode.SUCCESS.message);
-        this.current = current;
-        this.total = total;
+        this.pager = pager;
     }
 
 
@@ -62,13 +49,12 @@ public class PageResult<T> extends Result<T> {
     /**
      *
      * @param data
-     * @param current
-     * @param total
+     * @param pager
      * @param <T>
      * @return
      */
-    public static <T> PageResult<T> data(T data, Long current, Long total) {
-        return new PageResult<>(data, current, total);
+    public static <T> PageResult<T> data(T data, Pager pager) {
+        return new PageResult<>(data, pager);
     }
 
 }

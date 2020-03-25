@@ -1,25 +1,23 @@
-package org.okboom.reksai.dht.search.dto;
+package org.okboom.reksai.dht.web.params;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.EqualsAndHashCode;
 import org.okboom.reksai.data.support.Query;
 
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 /**
  * @author tookbra
  */
 @Data
-@Accessors(chain = true)
-public class TorrentSearchPageDTO extends Query {
-
+@EqualsAndHashCode(callSuper = false)
+public class SearchParam extends Query {
 
     private String infoHash;
     /**
      * 文件名
      */
-    @NotEmpty
+    @NotEmpty(message = "请输入你要搜索的关键词")
     private String fileName;
     /**
      * 文件类型

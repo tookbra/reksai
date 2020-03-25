@@ -3,6 +3,7 @@ package org.okboom.reksai.dht.search.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -15,6 +16,10 @@ public class TorrentDTO implements Serializable {
      * infoHash
      */
     private String infoHash;
+    /**
+     * 摘要
+     */
+    private String summary;
     /**
      * 文件类型
      */
@@ -30,7 +35,7 @@ public class TorrentDTO implements Serializable {
     /**
      * 创建时间
      */
-    private Long createDate;
+    private LocalDateTime createDate;
     /**
      * 文件
      */

@@ -1,4 +1,6 @@
-
+.index {
+  min-height: calc(100vh - 230px);
+}
 .logo {
   align-items: center;
   display: flex;

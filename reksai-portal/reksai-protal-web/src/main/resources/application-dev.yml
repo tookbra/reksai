@@ -7,3 +7,5 @@ dubbo:
     name: dubbo
   scan:
     base-packages: org.okboom.reksai.dht.web.service
+  cloud:
+    subscribed-services: reksai-dht-search-service

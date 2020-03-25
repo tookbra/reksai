@@ -33,6 +33,8 @@ public class Result<T> implements Serializable {
      */
     private String msg;
 
+    protected Result() {}
+
     protected Result(ResultCode resultCode, String msg) {
         this(resultCode, null, msg);
     }

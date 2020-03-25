@@ -16,6 +16,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.query.MoreLikeThisQuery;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.time.LocalDateTime;
+
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 /**
@@ -41,7 +44,7 @@ public class TorrentIndexRepositoryTest {
         torrent.setFileType("图片,音频1");
         torrent.setFileName("我爱写代码");
         torrent.setFileSize(277959244L);
-        torrent.setCreateDate(1584532261018L);
+        torrent.setCreateDate(LocalDateTime.now());
 
 //        IndexQuery indexQuery = new IndexQueryBuilder()
 //                .withId(torrent.getInfoHash())

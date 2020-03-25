@@ -46,8 +46,8 @@ public class TorrentManager {
      * @param infoHash
      * @return
      */
-    public Optional<Torrent> findById(String infoHash) {
-        Optional<Torrent> torrentOptional = torrentRepository.findById(infoHash);
+    public Optional<Torrent> findBySummary(String infoHash) {
+        Optional<Torrent> torrentOptional = torrentRepository.findBySummary(infoHash);
         return torrentOptional;
     }
 
@@ -67,11 +67,11 @@ public class TorrentManager {
 
         if (StringUtils.isNotBlank(fileName)) {
             // filter more fast must
-            boolQuery.filter(QueryBuilders.matchQuery("fileName", fileName));
+            boolQuery.must(QueryBuilders.matchQuery("fileName", fileName));
         }
 
         if (StringUtils.isNotBlank(fileType)) {
-            boolQuery.filter(QueryBuilders.matchQuery("fileType", fileType));
+            boolQuery.must(QueryBuilders.matchQuery("fileType", fileType));
         }
 
         if (!CollectionUtils.isEmpty(query.getSorts())) {

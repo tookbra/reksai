@@ -1,0 +1,40 @@
+<div class="pager-wrap" th:fragment="pager">
+    <div class="pc-pager-wrap" th:if="${pager.total gt 0}">
+
+        <a href="javascript:void(0);" class="pager-item" th:if="${pager.pageNum != 1}" th:attr="current=${pager.pageNum} - 1">上一页</a>
+        <a href="javascript:void(0);" class="pager-item" th:classappend="${(pager.pageNum) eq 1} ? 'active' : ''" th:attr="current=1">1</a>
+
+        <a href="javascript:void(0);" class="pager-item" th:if="${(pager.pageNum) le 4}" th:each="i : ${#numbers.sequence(2,5)}"
+           th:classappend="${(pager.pageNum) eq i} ? 'active' : ''" th:attr="current=${i}">
+            [[${i}]]
+        </a>
+        <span class="pager-mark pager-item" th:if="${(pager.pageNum) le 4}">...</span>
+
+        <span class="pager-mark pager-item" th:if="${(pager.totalPage - pager.pageNum) le 3}">...</span>
+
+        <a href="javascript:void(0);" class="pager-item" th:if="${(pager.totalPage - pager.pageNum) le 3}" th:each="i : ${#numbers.sequence(pager.totalPage-4, pager.totalPage-1)}"
+           th:classappend="${(pager.pageNum) eq i} ? 'active' : ''" th:attr="current=${i}">
+            [[${i}]]
+        </a>
+
+
+        <span class="pager-mark pager-item" th:if="${(pager.pageNum gt 4) && ((pager.totalPage - pager.pageNum) gt 3 )}">...</span>
+
+        <a href="javascript:void(0);" class="pager-item active" th:if="${(pager.pageNum gt 4) && ((pager.totalPage - pager.pageNum) gt 3 )}" th:attr="current=${pager.pageNum}">
+            [[${pager.pageNum}]]
+        </a>
+        <a href="javascript:void(0);" class="pager-item" th:if="${(pager.pageNum gt 4) && ((pager.totalPage - pager.pageNum) gt 3 )}" th:attr="current=${pager.pageNum + 1}">
+            [[${pager.pageNum + 1}]]
+        </a>
+        <a href="javascript:void(0);" class="pager-item" th:if="${(pager.pageNum gt 4) && ((pager.totalPage - pager.pageNum) gt 3 )}" th:attr="current=${pager.pageNum + 2}">
+            [[${pager.pageNum + 2}]]
+        </a>
+
+
+        <span class="pager-mark pager-item" th:if="${(pager.pageNum gt 4) && ((pager.totalPage - pager.pageNum) gt 3 )}">...</span>
+
+
+        <a class="pager-item" href="javascript:void(0);" th:classappend="${pager.pageNum == pager.totalPage} ? 'active' : ''" th:attr="current=${pager.totalPage}">[[${pager.totalPage}]]</a>
+        <a class="pager-item" href="javascript:void(0);" th:if="${pager.pageNum != pager.totalPage}" th:attr="current=${pager.pageNum + 1}">下一页</a>
+    </div>
+</div>

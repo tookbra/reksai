@@ -19,15 +19,18 @@ spring:
         timeout: 10000
         namespace: f5304245-c028-4480-ab18-186fc729ebbc
         group: reksai
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    cache: false
+
   profiles:
     active: dev
-  velocity:
-    prefix: /screen
-    suffix: .vm
-    layout-url: /layout/default.vm
-    layout-key: layout_key
-    screen-content-key: body_content
+
 
 logging:
   level:
-    root: debug
+    root: info

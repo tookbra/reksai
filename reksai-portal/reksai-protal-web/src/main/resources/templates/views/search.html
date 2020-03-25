@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/layout/head :: head"></head>
+<link rel="stylesheet" href="/css/search.css">
+<body>
+<div class="layout">
+    <div class="result content">
+        <div class="header-wrap">
+            <header class="header">
+                <div class="inner">
+                    <a href="/">
+                        <div class="logo">
+                            <img src="images/logo.png"/>
+                            <h1>雷克塞</h1>
+                        </div>
+                    </a>
+                    <div class="form">
+                        <form action="/search" id="search-form" method="post" class="search-form">
+                            <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" name="fileName" th:value="${searchParam.fileName}"/>
+                            <input type="button" class="search-btn" onclick="search(1)" value=""/>
+                        </form>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="wrap">
+            <div class="search-result">
+                <div class="filter"></div>
+                <div class="inner">
+                    <p class="tip"></p>
+                    <div class="main">
+                        <div target="_blank" class="resource-item-wrap valid" th:each="torrent : ${result}">
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <h1 class="resource-title">
+                                        <img src="https://static-dashengpan.enfi.vip/_nuxt/img/c3893be.png"
+                                             alt="<mark>沙发</mark>" class="filetype">
+                                        <a th:href="'/infoHash/' + ${torrent.summary}" target="_blank" class="valid">
+                                            <mark th:text="${#strings.abbreviate(torrent.fileName,40)}" th:title="${torrent.fileName}"></mark>
+                                        </a>
+                                    </h1>
+                                    <hr/>
+                                    <div class="resource-meta">
+                                        <span class="meta-item">
+                                            <span class="label">文件大小</span>
+                                            <span class="em">280.55MB</span>
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="label">文件格式</span>
+                                            <span class="em" th:text="${torrent.fileType}"></span>
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="label">创建时间</span>
+                                            <span class="em" th:text="${#temporals.format(torrent.createDate,'yyyy-MM-dd HH:mm:ss')}"></span>
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="label">在线观看</span>
+                                            <span class="em">下载</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:replace="/layout/pager :: pager"></div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="/layout/footer :: copyright"></div>
+        <script src="/js/search.js"></script>
+    </div>
+</div>
+</body>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html class="no-js" lang="" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="/layout/head :: head"></head>
+<link rel="stylesheet" href="/css/index.css">
+<body>
+    <div class="layout">
+        <div class="index content">
+            <div class="body">
+                <div class="logo">
+                    <img src="images/logo.png"/>
+                    <h1>雷克塞</h1>
+                </div>
+                <div class="form">
+                    <form class="search-form" action="/search" method="post">
+                        <input type="text" class="search" placeholder="请输入你要搜索的关键词" autofocus="autofocus" name="fileName" />
+                        <input type="submit" class="search-btn" value=""/>
+                    </form>
+                </div>
+                <div class="hot-words">
+                    <div class="inner">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="/layout/footer :: copyright"></div>
+    </div>
+</body>
+</html>

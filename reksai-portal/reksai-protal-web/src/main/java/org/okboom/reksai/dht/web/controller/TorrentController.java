@@ -30,7 +30,9 @@ public class TorrentController {
         Result<TorrentInfoDTO> result = torrentService.findByInfoHash(infoHash);
         if(result.isSuccess()) {
             modelMap.put("torrent", result.getData());
+        } else {
+            return "views/500";
         }
-        return "detail";
+        return "views/detail";
     }
 }

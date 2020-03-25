@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.okboom.reksai.data.result.PageResult;
+import org.okboom.reksai.data.result.Pager;
 import org.okboom.reksai.data.result.Result;
 import org.okboom.reksai.data.support.Query;
 import org.okboom.reksai.dht.search.convert.TorrentConvert;
@@ -35,7 +36,7 @@ public class TorrentServiceImpl implements TorrentService {
     @Override
     public Result<TorrentInfoDTO> findByInfoHash(String infoHash) {
         TorrentInfoDTO torrentInfoDTO = new TorrentInfoDTO();
-        Optional<Torrent> torrentOptional = torrentManager.findById(infoHash);
+        Optional<Torrent> torrentOptional = torrentManager.findBySummary(infoHash);
         torrentOptional.ifPresent(torrent -> {
             torrentInfoDTO.setTorrentDTO(TorrentConvert.INSTANCE.convert(torrent));
 
@@ -67,6 +68,6 @@ public class TorrentServiceImpl implements TorrentService {
         }
 
         List<TorrentDTO> torrentDTOS = TorrentConvert.INSTANCE.convertDocuments(torrentDocuments);
-        return PageResult.data(torrentDTOS, (long)page.getNumber(), page.getTotalElements());
+        return PageResult.data(torrentDTOS, new Pager(torrentSearchPageDTO.getCurrent(), page.getTotalElements(), page.getTotalPages()));
     }
 }

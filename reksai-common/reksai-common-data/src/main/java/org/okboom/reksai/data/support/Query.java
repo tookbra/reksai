@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,19 +13,19 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class Query {
+public class Query implements Serializable {
 
     /**
      * 页码
      */
     @NotNull
-    private Integer current;
+    private Integer current = 1;
 
     /**
      * 查询数量
      */
     @NotNull
-    private Integer limit;
+    private Integer limit = 20;
 
     /**
      * 排序列表
