@@ -1,6 +1,7 @@
-package org.okboom.reksai.dht.metadata.api.domain;
+package org.okboom.reksai.data;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author Administrator
  */
 @Data
+@NoArgsConstructor
 @ToString
 public class FileNode implements Serializable {
 
@@ -25,7 +27,7 @@ public class FileNode implements Serializable {
 	/**
 	 * 文件名
 	 */
-	private String filename = "";
+	private String fileName = "";
 	/**
 	 * 文件大小
 	 */
@@ -52,7 +54,7 @@ public class FileNode implements Serializable {
 		super();
 		this.nid = nid;
 		this.pid = pid;
-		this.filename = filename;
+		this.fileName = filename;
 		this.fileSize = filesize;
 		this.index = index;
 	}
@@ -61,7 +63,7 @@ public class FileNode implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((filename == null) ? 0 : filename.hashCode());
+		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
 		return result;
 	}
 
@@ -77,10 +79,10 @@ public class FileNode implements Serializable {
 			return false;
 		}
 		FileNode other = (FileNode) obj;
-		if (filename == null) {
-			if (other.filename != null)
+		if (fileName == null) {
+			if (other.fileName != null)
 				return false;
-		} else if (!filename.equals(other.filename)) {
+		} else if (!fileName.equals(other.fileName)) {
 			return false;
 		}
 		return true;

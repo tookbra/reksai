@@ -29,6 +29,17 @@ public class MongoSettingsProperties {
     private String authenticationDatabase;
     private Integer minConnectionsPerHost = 10;
     private Integer connectionsPerHost = 50;
+    private Integer maxConnectionIdleTime = 3000;
+
+    /**
+     * 线程等待连接变为可用的最长时间
+     */
+    private Integer maxWaitTime = 6000;
+
+    /**
+     * 连接超时时间
+     */
+    private Integer connectTimeout = 5000;
 
 
 }

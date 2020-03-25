@@ -2,6 +2,7 @@ package org.okboom.reksai.transfer.domain;
 
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,10 +26,12 @@ public class FileNode implements Serializable {
 	/**
 	 * 文件名
 	 */
+	@Field("file_name")
 	private String fileName = "";
 	/**
 	 * 文件大小
 	 */
+	@Field("file_size")
 	private Long fileSize;
 
 	private int index;

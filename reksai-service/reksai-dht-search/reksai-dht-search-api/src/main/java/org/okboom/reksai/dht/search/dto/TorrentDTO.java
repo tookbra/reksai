@@ -1,6 +1,7 @@
 package org.okboom.reksai.dht.search.dto;
 
 import lombok.Data;
+import org.okboom.reksai.data.FileNode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -39,7 +40,7 @@ public class TorrentDTO implements Serializable {
     /**
      * 文件
      */
-    private String files;
+    private FileNode files;
 
 
 }

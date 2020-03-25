@@ -29,6 +29,6 @@ public class TransferApplication {
     @EventListener(ApplicationReadyEvent.class)
     public void initIndicesAfterStartup() {
         IndexOperations userIndexOps = mongoTemplate.indexOps(Torrent.class);
-        userIndexOps.ensureIndex(new Index().on("infoHash", Sort.Direction.ASC).unique());
+        userIndexOps.ensureIndex(new Index().on("summary", Sort.Direction.ASC).unique());
     }
 }

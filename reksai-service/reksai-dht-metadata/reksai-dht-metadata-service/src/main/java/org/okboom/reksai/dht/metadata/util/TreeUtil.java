@@ -2,7 +2,8 @@ package org.okboom.reksai.dht.metadata.util;
 
 
 
-import org.okboom.reksai.dht.metadata.api.domain.FileNode;
+
+import org.okboom.reksai.data.FileNode;
 
 import java.util.List;
 

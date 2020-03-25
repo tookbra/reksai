@@ -30,6 +30,11 @@ public class MongoClientConfiguration {
         MongoClientOptions.Builder builder = new MongoClientOptions.Builder();
         builder.connectionsPerHost(mongoSettingsProperties.getConnectionsPerHost());
         builder.minConnectionsPerHost(mongoSettingsProperties.getMinConnectionsPerHost());
+        builder.maxConnectionIdleTime(mongoSettingsProperties.getMaxConnectionIdleTime());
+        builder.maxConnectionLifeTime(mongoSettingsProperties.getMaxConnectionIdleTime());
+        builder.maxWaitTime(mongoSettingsProperties.getMaxWaitTime());
+        builder.connectTimeout(mongoSettingsProperties.getConnectTimeout());
+
         if (mongoSettingsProperties.getReplicaSet() != null) {
             builder.requiredReplicaSetName(mongoSettingsProperties.getReplicaSet());
         }

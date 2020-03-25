@@ -2,6 +2,7 @@ package org.okboom.reksai.dht.metadata.api.domain;
 
 import lombok.Data;
 import lombok.ToString;
+import org.okboom.reksai.data.FileNode;
 
 import java.io.Serializable;
 

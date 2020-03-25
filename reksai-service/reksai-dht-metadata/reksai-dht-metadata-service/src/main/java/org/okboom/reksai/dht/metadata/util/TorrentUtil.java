@@ -2,8 +2,8 @@ package org.okboom.reksai.dht.metadata.util;
 
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
+import org.okboom.reksai.data.FileNode;
 import org.okboom.reksai.dht.metadata.api.domain.Metadata;
-import org.okboom.reksai.dht.metadata.api.domain.FileNode;
 import org.okboom.reksai.tool.StringUtil;
 
 import java.math.BigInteger;
@@ -94,12 +94,12 @@ public final class TorrentUtil {
             encoding = (String) map.get(ENCODING);
         }
 
-        Metadata Metadata = new Metadata();
+        Metadata metadata = new Metadata();
 
         if (map.containsKey(CREATION_DATE)) {
-            Metadata.setCreateDate(((BigInteger) map.get(CREATION_DATE)).longValue());
+            metadata.setCreateDate(((BigInteger) map.get(CREATION_DATE)).longValue());
         } else {
-            Metadata.setCreateDate(System.currentTimeMillis());
+            metadata.setCreateDate(System.currentTimeMillis());
         }
 
         byte[] temp;
@@ -114,28 +114,28 @@ public final class TorrentUtil {
             }
         }
 
-        Metadata.setFileName(StrUtil.str(temp, encoding));
+        metadata.setFileName(StrUtil.str(temp, encoding));
 
         // 多文件
         if (info.containsKey(FILES)) {
-            parseMultiFile(Metadata, info);
+            parseMultiFile(metadata, info);
         } else {
-            Metadata.setFileSize(((BigInteger) info.get("length")).longValue());
+            metadata.setFileSize(((BigInteger) info.get("length")).longValue());
 
-            String type = ExtensionUtil.getExtensionType(Metadata.getFileName());
+            String type = ExtensionUtil.getExtensionType(metadata.getFileName());
             if (type != null) {
-                Metadata.setFileType(type);
+                metadata.setFileType(type);
             }
         }
-        Metadata.setInfoHash(HexUtil.encodeHexStr(infoHash));
-        return Metadata;
+        metadata.setInfoHash(HexUtil.encodeHexStr(infoHash));
+        return metadata;
     }
 
     /**
      * 解析多文件
-     * @param Metadata
+     * @param metadata
      */
-    private static void parseMultiFile(Metadata Metadata, Map<String, Object> info) {
+    private static void parseMultiFile(Metadata metadata, Map<String, Object> info) {
         Set<String> types = new HashSet<>();
 
         List<Map<String, Object>> list = (List<Map<String, Object>>) info.get("files");
@@ -178,14 +178,14 @@ public final class TorrentUtil {
             i++;
         }
         FileNode node = TreeUtil.createTree(nodes);
-        Metadata.setFileSize(total);
-        Metadata.setFiles(node);
+        metadata.setFileSize(total);
+        metadata.setFiles(node);
         if (types.size() <= 0) {
             types.add("其他");
         }
         String sType = String.join(",", types);
         if (sType != null && !"".equals(sType)) {
-            Metadata.setFileType(sType);
+            metadata.setFileType(sType);
         }
     }
 }
