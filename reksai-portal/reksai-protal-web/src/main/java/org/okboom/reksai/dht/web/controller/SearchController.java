@@ -33,7 +33,7 @@ public class SearchController {
     @RequestMapping(method = RequestMethod.POST)
     public String search(@Valid SearchParam searchParam, ModelMap modelMap) {
         TorrentSearchPageDTO torrentSearchPageDTO = SearchConvert.INSTANCE.convert(searchParam);
-        modelMap.put("SearchParam", searchParam);
+        modelMap.put("searchParam", searchParam);
         PageResult<List<TorrentDTO>> result = torrentService.search(torrentSearchPageDTO);
         if(result.isSuccess()) {
             modelMap.put("result", result.getData());

@@ -25,7 +25,7 @@ public class TorrentServiceTest {
 
     @Test
     public void testFindByInfoHash() {
-        Result<TorrentInfoDTO> result = torrentService.findByInfoHash("42d5bb189d0ce71ce66cf14220483e163805b73c");
+        Result<TorrentInfoDTO> result = torrentService.findByInfoHash("9743785f586ed54176fc1aafa8fbbc66");
         System.out.println(result);
     }
 

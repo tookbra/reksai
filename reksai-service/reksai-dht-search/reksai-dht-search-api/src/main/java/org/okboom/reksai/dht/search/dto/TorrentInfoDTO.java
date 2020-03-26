@@ -19,5 +19,6 @@ public class TorrentInfoDTO implements Serializable {
     /**
      * 相似文件列表
      */
-    private List<String> similar;
+    private List<TorrentDTO> similar;
+
 }

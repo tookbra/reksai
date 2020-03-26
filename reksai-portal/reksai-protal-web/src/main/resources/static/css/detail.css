@@ -156,6 +156,10 @@
   text-decoration: none;
 }
 
+.detail-page #random .content-inner a:hover {
+  color: #c96e00
+}
+
 .detail-page #info .button-wrap .button-inner.baidu-button-inner .button {
   background-color: #666;
 }

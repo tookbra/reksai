@@ -2,9 +2,7 @@ package org.okboom.reksai.dht.domain;
 
 import lombok.Data;
 import org.okboom.reksai.mongo.annotation.AutoIncValue;
-import org.okboom.reksai.transfer.domain.FileNode;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -53,5 +51,5 @@ public class Torrent implements Serializable {
     /**
      * 文件
      */
-    private FileNode files;
+    private String files;
 }

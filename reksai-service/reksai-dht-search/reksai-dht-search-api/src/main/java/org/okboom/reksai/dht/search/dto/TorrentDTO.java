@@ -40,7 +40,7 @@ public class TorrentDTO implements Serializable {
     /**
      * 文件
      */
-    private FileNode files;
+    private FileNode fileNodes;
 
 
 }

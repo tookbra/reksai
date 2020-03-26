@@ -87,7 +87,7 @@ public class TransferTest {
                     torrent.setCreateDate(searchInfoHash.getCreateTime());
                     torrent.setSummary(SecureUtil.md5(searchInfoHash.getInfoHash()));
                     FileNode node = TreeUtil.createTree(nodes);
-                    torrent.setFiles(node);
+                    torrent.setFiles(JSONUtil.toJsonStr(node));
 
                     torrents.add(torrent);
                 });

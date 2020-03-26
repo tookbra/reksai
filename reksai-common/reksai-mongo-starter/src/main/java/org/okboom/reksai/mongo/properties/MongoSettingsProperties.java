@@ -29,7 +29,10 @@ public class MongoSettingsProperties {
     private String authenticationDatabase;
     private Integer minConnectionsPerHost = 10;
     private Integer connectionsPerHost = 50;
-    private Integer maxConnectionIdleTime = 3000;
+    /**
+     * 连接池中连接的最大空闲时间（毫秒）。超出空闲时间的连接将被关闭，并在必要时由新建连接替换
+     */
+    private Integer maxConnectionIdleTime = 60000;
 
     /**
      * 线程等待连接变为可用的最长时间

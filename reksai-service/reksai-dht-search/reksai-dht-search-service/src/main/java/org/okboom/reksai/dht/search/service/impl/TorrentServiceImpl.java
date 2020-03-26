@@ -1,8 +1,11 @@
 package org.okboom.reksai.dht.search.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.Service;
+import org.okboom.reksai.data.FileNode;
 import org.okboom.reksai.data.result.PageResult;
 import org.okboom.reksai.data.result.Pager;
 import org.okboom.reksai.data.result.Result;
@@ -40,14 +43,16 @@ public class TorrentServiceImpl implements TorrentService {
         torrentOptional.ifPresent(torrent -> {
             torrentInfoDTO.setTorrentDTO(TorrentConvert.INSTANCE.convert(torrent));
 
-            String[] fields = new String[] { "fileName" };
+            if(StringUtils.isNotBlank(torrent.getFiles())) {
+                torrentInfoDTO.getTorrentDTO().setFileNodes(JSONUtil.toBean(torrent.getFiles(), FileNode.class));
+            };
+
+            String[] fields = new String[] { "file_name" };
             Page<TorrentDocument> torrentDocumentPage = torrentManager.searchSimilar(torrent.getInfoHash(),
                     fields, PageRequest.of(0, 10));
             List<TorrentDocument> torrentDocuments = torrentDocumentPage.getContent();
             if(!CollectionUtils.isEmpty(torrentDocuments)) {
-                List<String> similarNames = torrentDocuments
-                        .stream().map(TorrentDocument::getFileName).collect(Collectors.toList());
-                torrentInfoDTO.setSimilar(similarNames);
+                torrentInfoDTO.setSimilar(TorrentConvert.INSTANCE.convertDocuments(torrentDocuments));
             }
 
         });
